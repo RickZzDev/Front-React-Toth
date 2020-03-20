@@ -4,7 +4,7 @@ class Botao extends Component {
 
     render() {
         return(
-            <input type="button" value={this.props.value} className="btn btn-block" className={this.props.color}/>
+            <button type="button" value={this.props.value} className="btn btn-block " className={this.props.color}/>
         );
     }
 
