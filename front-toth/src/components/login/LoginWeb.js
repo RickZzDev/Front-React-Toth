@@ -9,17 +9,17 @@ class Login extends Component{
                         <div className="row mt-2">
                             <h1 className="mx-auto text-primary">Bem Vindo ao Toth</h1>
                         </div>
-                        <form className="text-left">
+                        <form>
                             <div className="row mt-3">
-                                <div className="form-group">
-                                    <label className="mr-2">Email:</label>
-                                    <input type="text" className="form-control rounded"/>
+                                <div className="form-group text-left">
+                                    <label className="ml-2">Email:</label>
+                                    <input type="text" className="form-control rounded-pill"/>
                                 </div>
                             </div>
                             <div className="row mt-3">
-                                <div className="form-group">
-                                    <label className="mr-2">Senha:</label>
-                                    <input type="text" className="form-control rounded"/>
+                                <div className="form-group text-left">
+                                    <label className="ml-2">Senha:</label>
+                                    <input type="text" className="form-control rounded-pill"/>
                                 </div>
                             </div>
                         </form>
