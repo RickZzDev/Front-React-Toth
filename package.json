@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/RickZzDev/Front-React-Toth/issues"
   },
-  "homepage": "https://github.com/RickZzDev/Front-React-Toth#readme"
+  "homepage": "https://github.com/RickZzDev/Front-React-Toth#readme",
+  "dependencies": {
+    "acorn": "^7.1.1"
+  }
 }
