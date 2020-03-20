@@ -24,7 +24,9 @@ class Login extends Component{
                                     <input type="text" className="form-control rounded-pill"/>
                                 </div>
                             </div>
-                            <Botao value="Testando" color="bg-primary"/>
+                            <div className="row">
+                                <Botao value="Testando" color=" btn-primary rounded-pill"/>
+                            </div>
                         </form>
                     </div>
                     <div className="col-lg-8 bg-primary">2</div>
