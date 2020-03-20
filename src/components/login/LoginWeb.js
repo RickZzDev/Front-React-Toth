@@ -7,9 +7,9 @@ class Login extends Component{
          return(
              <div className="container bg-light mt-5">
                 <div className="row">
-                    <div className="col-lg-4 bg-transparent pl-5 pr-5">
+                    <div className="col-lg-4 bg-transparent p-5">
                         <div className="row mt-2">
-                            <h1 className="mx-auto text-primary">Bem Vindo ao Toth</h1>
+                            <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning"><strong>Toth</strong></p></h1>
                         </div>
                         <form>
                             <div className="row mt-3">
