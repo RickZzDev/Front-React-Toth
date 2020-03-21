@@ -35,8 +35,8 @@ class Login extends Component{
                         <div className="bg-dark mt-2">
                             s
                         </div>
-                        <div className="bg-light">
-                            a
+                        <div className="">
+                            <span className="nomeToth">TOTH</span>
                         </div>
                     </div>
                 </div>
