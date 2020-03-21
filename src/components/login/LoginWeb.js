@@ -1,35 +1,44 @@
 import React,{Component} from 'react'
 import Botao from '../botao'
+import './LoginWeb.css'
 
 class Login extends Component{
     
     render(){
          return(
-             <div className="container bg-light mt-5">
-                <div className="row">
+             <div className="container bg-light mt-5 div_login">
+                <div className="row height-100">
                     <div className="col-lg-4 bg-transparent p-5">
                         <div className="row mt-2">
                             <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning"><strong>Toth</strong></p></h1>
                         </div>
                         <form>
                             <div className="row mt-3">
-                                <div className="form-group text-left">
+                                <div className="form-group text-left  col-12">
                                     <label className="ml-2">Email:</label>
                                     <input type="text" className="form-control rounded-pill"/>
                                 </div>
                             </div>
-                            <div className="row mt-3">
-                                <div className="form-group text-left">
+                            <div className="row  mt-3">
+                                <div className="form-group text-left col-12">
                                     <label className="ml-2">Senha:</label>
                                     <input type="text" className="form-control rounded-pill"/>
                                 </div>
                             </div>
-                            <div className="row">
-                                <Botao value="Testando" color=" btn-primary rounded-pill"/>
+                            <div className="row pr-3 pl-3 mb-2 " >
+                                <Botao value="Login" color=" btn-warning rounded-pill"/>
                             </div>
+                            <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
                         </form>
                     </div>
-                    <div className="col-lg-8 bg-primary">2</div>
+                    <div className="col-lg-8 bg-primary justify-content-center p-5">
+                        <div className="bg-dark mt-2">
+                            
+                        </div>
+                        <div className="bg-light">
+
+                        </div>
+                    </div>
                 </div>
              </div>
          )
