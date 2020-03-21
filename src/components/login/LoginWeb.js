@@ -63,7 +63,7 @@ class Login extends Component{
                             <form name="frmformulario" onSubmit={this.tryLogin}>
                                 <div className="row mt-3">
                                     <div className="form-group text-left  col-12">
-                                    <div className="alert alert-danger fading" role="alert">
+                                    <div className="alert alert-danger fading invisible" role="alert">
                                         {this.state.mensagemErro.inputLogin}
                                     </div>
                                         <label className="ml-2">Login:</label>
