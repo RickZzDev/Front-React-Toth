@@ -70,12 +70,8 @@ class Login extends Component{
                                         <input type="text" name="login" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
                                     </div>
                                 </div>
-                                <div className="row  mt-3">
+                                <div className="row mt-3">
                                     <div className="form-group text-left col-12">
-                                    <div class="alert alert-success fade in alert-dismissible" style="margin-top:18px;">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                                        {this.state.mensagemErro.inputSenha}
-                                    </div>
                                         <label className="ml-2">Senha:</label>
                                         <input type="text" name="senha" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
                                     </div>
