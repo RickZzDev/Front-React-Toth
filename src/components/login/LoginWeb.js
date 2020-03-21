@@ -1,6 +1,10 @@
 import React,{Component} from 'react'
 import Botao from '../botao'
+<<<<<<< Updated upstream
 import './LoginWeb.css'
+=======
+import ImagemToth from '../ImagemToth'
+>>>>>>> Stashed changes
 
 class Login extends Component{
     
@@ -31,6 +35,7 @@ class Login extends Component{
                             <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
                         </form>
                     </div>
+<<<<<<< Updated upstream
                     <div className="col-lg-8 bg-primary justify-content-center p-5">
                         <div className="bg-dark mt-2">
                             s
@@ -38,6 +43,10 @@ class Login extends Component{
                         <div className="bg-light">
                             a
                         </div>
+=======
+                    <div className="col-lg-8 bg-primary">
+                        <ImagemToth />
+>>>>>>> Stashed changes
                     </div>
                 </div>
              </div>
