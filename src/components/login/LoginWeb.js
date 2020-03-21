@@ -4,6 +4,32 @@ import './LoginWeb.css'
 import ImagemToth from '../imagemToth'
 
 class Login extends Component{
+
+    constructor() {
+        super()
+
+        this.state = {
+            dadosLogin: {
+                email: '',
+                senha: ''
+            }
+        }
+    }
+
+    capturarDadosCampos = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({dadosLogin: {
+            ...this.state.dadosLogin,
+            [name] : value
+        }});
+
+        console.log(this.state.dadosLogin)
+    }
+
+    tryLogin = (event) => {
+        event.preventDefault()
+    }
     
     render(){
          return(
@@ -14,17 +40,17 @@ class Login extends Component{
                             <div className="row mt-2">
                                 <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning"><strong>Toth</strong></p></h1>
                             </div>
-                            <form>
+                            <form name="frmformulario" onSubmit={this.tryLogin}>
                                 <div className="row mt-3">
                                     <div className="form-group text-left  col-12">
                                         <label className="ml-2">Email:</label>
-                                        <input type="text" className="form-control rounded-pill"/>
+                                        <input type="text" name="email" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
                                     </div>
                                 </div>
                                 <div className="row  mt-3">
                                     <div className="form-group text-left col-12">
                                         <label className="ml-2">Senha:</label>
-                                        <input type="text" className="form-control rounded-pill"/>
+                                        <input type="text" name="senha" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
                                     </div>
                                 </div>
                                 <div className="row pr-3 pl-3 mb-2 " >
