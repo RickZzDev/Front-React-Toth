@@ -43,7 +43,7 @@ class Login extends Component{
                 ...this.state.mensagemErro,
                 inputLogin: jsonResponse.status
             }})
-        else if(response.status == 400)
+        else if(response.status === 400)
             this.setState({mensagemErro: {
                 ...this.state.mensagemErro,
                 inputSenha: jsonResponse.status
