@@ -33,10 +33,10 @@ class Login extends Component{
                     </div>
                     <div className="col-lg-8 bg-primary justify-content-center p-5">
                         <div className="bg-dark mt-2">
-                            
+                            s
                         </div>
                         <div className="bg-light">
-
+                            a
                         </div>
                     </div>
                 </div>
