@@ -90,12 +90,12 @@ class Login extends Component{
                                 <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
                             </form>
                         </div>
-                        <div className="col-8 bg-primary teste" >
-                            <div className="">
-                                <ImagemToth />  
+                        <div className="col-8 bg-primary" >
+                            <div className="text-center" >
+                                <ImagemToth className="" />  
                             </div>
-                            <div className="">
-                                <span className="nomeToth">TOTH</span>
+                            <div className=" text-center">
+                                <span className="nomeToth ">TOTH</span>
                             </div>
                         </div>                  
                     </div>
