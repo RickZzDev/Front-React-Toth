@@ -61,43 +61,45 @@ class Login extends Component{
     
     render(){
          return(
-             <div className="height-100 opacidade pt-5 ">
-                <div className="container bg-light div_login ">
-                    <div className="row divComponentLogin">
-                        <div className="col-lg-4 bg-transparent p-5" >
-                            <div className="row mt-2">
-                                <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning text-center"><strong>Toth</strong></p></h1>
+             <div className="height-100 backgroundAnime opacidade">
+                <div className="opacidade height-100 pt-5">
+                    <div className="container bg-light div_login ">
+                        <div className="row divComponentLogin">
+                            <div className="col-lg-4 bg-transparent p-5" >
+                                <div className="row mt-2">
+                                    <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning text-center"><strong>Toth</strong></p></h1>
+                                </div>
+                                <form name="frmformulario" onSubmit={this.tryLogin}>
+                                    <div className="row mt-3">
+                                        <div className="form-group text-left  col-12">
+                                        <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
+                                            {this.state.errorMessage}
+                                        </div>
+                                            <label className="ml-2">Login:</label>
+                                            <input type="text" name="login" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
+                                        </div>
+                                    </div>
+                                    <div className="row mt-3">
+                                        <div className="form-group text-left col-12">
+                                            <label className="ml-2">Senha:</label>
+                                            <input type="password" name="senha" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
+                                        </div>
+                                    </div>
+                                    <div className="row pr-3 pl-3 mb-2 " >
+                                        <Botao value="Login" color=" btn-warning rounded-pill"/>
+                                    </div>
+                                    <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
+                                </form>
                             </div>
-                            <form name="frmformulario" onSubmit={this.tryLogin}>
-                                <div className="row mt-3">
-                                    <div className="form-group text-left  col-12">
-                                    <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
-                                        {this.state.errorMessage}
-                                    </div>
-                                        <label className="ml-2">Login:</label>
-                                        <input type="text" name="login" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
-                                    </div>
+                            <div className="col-8 bg-primary" >
+                                <div className="text-center" >
+                                    <ImagemToth className="" />  
                                 </div>
-                                <div className="row mt-3">
-                                    <div className="form-group text-left col-12">
-                                        <label className="ml-2">Senha:</label>
-                                        <input type="password" name="senha" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
-                                    </div>
+                                <div className=" text-center">
+                                    <span className="nomeToth ">TOTH</span>
                                 </div>
-                                <div className="row pr-3 pl-3 mb-2 " >
-                                    <Botao value="Login" color=" btn-warning rounded-pill"/>
-                                </div>
-                                <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
-                            </form>
+                            </div>                  
                         </div>
-                        <div className="col-8 bg-primary" >
-                            <div className="text-center" >
-                                <ImagemToth className="" />  
-                            </div>
-                            <div className=" text-center">
-                                <span className="nomeToth ">TOTH</span>
-                            </div>
-                        </div>                  
                     </div>
                 </div>
             </div>    

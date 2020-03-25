@@ -12,8 +12,8 @@ class Step1 extends Component{
 
     render(){
         return(
-            <div>
-
+            <div className="container bg-dark">
+                    aaa
             </div>
         )
     }

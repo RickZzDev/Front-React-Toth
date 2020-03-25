@@ -19,7 +19,7 @@ const NotFound = () =>{
 const Routes  = () =>(
     <Router>
         <Switch>
-            <Route path='/' component={Login} />
+            <Route path='/login' component={Login} />
             <Route path='/cadastro' component={Cadastro} />
             <Route path='/step1' component={Step1} />
             <Route path='/step2' component={Step2} />

@@ -8,6 +8,10 @@
     min-height: 100%;
 }
 
+.backgroundAnime{
+    background-image: url('../../assets/salaDeAula.jpg')
+}
+
 .nomeToth{
     font-size:10vh;
     color: white;
@@ -15,12 +19,7 @@
     font-weight: bold;
 }
 
-html, body{
-    /* background: rgb(255,244,0);
-    background: linear-gradient(90deg, rgba(255,244,0,1) 0%, rgba(255,176,1,1) 87%); */
-    background-image: url('../../assets/salaDeAula.jpg');
-    
-}
+
 
 .opacidade{
     background-color: rgba(252, 223, 3,0.5);
