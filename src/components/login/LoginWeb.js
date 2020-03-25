@@ -3,6 +3,7 @@ import Botao from '../botao'
 import './LoginWeb.css'
 import ImagemToth from '../imagemToth'
 import { doLogin } from '../../services/loginService'
+import '@material/react-text-field/dist/text-field.css'
 
 class Login extends Component{
 
@@ -61,17 +62,28 @@ class Login extends Component{
     
     render(){
          return(
-             <div className="height-100 backgroundAnime opacidade">
+             <div className="height-100 opacidade">
                 <div className="opacidade height-100 pt-5">
                     <div className="container bg-light div_login ">
                         <div className="row divComponentLogin">
-                            <div className="col-lg-4 bg-transparent p-5" >
+                            <div className="col-lg-6 bg-primary" >
+
+                            </div>
+                            <div className="col-lg-6 bg-transparent p-5" >
                                 <div className="row mt-2">
                                     <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning text-center"><strong>Toth</strong></p></h1>
                                 </div>
                                 <form name="frmformulario" onSubmit={this.tryLogin}>
                                     <div className="row mt-3">
                                         <div className="form-group text-left  col-12">
+                                        <TextField
+                                            outlined
+                                            label='Name'
+                                            >
+                                            <Input
+                                                value={this.state.value}
+                                                onChange={(e) => this.setState({value: e.currentTarget.value})} />
+                                        </TextField>
                                         <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                             {this.state.errorMessage}
                                         </div>
@@ -90,14 +102,6 @@ class Login extends Component{
                                     </div>
                                     <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
                                 </form>
-                            </div>
-                            <div className="col-8 bg-primary" >
-                                <div className="text-center" >
-                                    <ImagemToth className="" />  
-                                </div>
-                                <div className=" text-center">
-                                    <span className="nomeToth ">TOTH</span>
-                                </div>
                             </div>                  
                         </div>
                     </div>
