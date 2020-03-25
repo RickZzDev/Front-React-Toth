@@ -16,7 +16,7 @@ class Cadastro extends Component{
                 <div className="container bg-dark">
                     <div className="row">
                         <div className="col-12">
-
+            
                         </div>
                     </div>
                     <div className="row">

@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import Botao from '../../botao'
 
 class Step4 extends Component{
