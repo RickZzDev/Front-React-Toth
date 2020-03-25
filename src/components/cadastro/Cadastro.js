@@ -13,7 +13,16 @@ class Cadastro extends Component{
     render(){
         return(
             <div>
+                <div className="container bg-dark">
+                    <div className="row">
+                        <div className="col-12">
 
+                        </div>
+                    </div>
+                    <div className="row">
+                        
+                    </div>
+                </div>
             </div>
         )
     }
