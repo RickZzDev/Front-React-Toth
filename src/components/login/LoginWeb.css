@@ -32,3 +32,16 @@ html, body{
     height: 80vh;
 
 }
+
+
+.transition-5{
+    transition: 0.5;
+}
+
+.teste{
+    max-height: 100%;
+}
+
+.h-alert{
+    height: 3vh;
+}
