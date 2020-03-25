@@ -66,7 +66,7 @@ class Login extends Component{
                     <div className="row divComponentLogin">
                         <div className="col-lg-4 bg-transparent p-5" >
                             <div className="row mt-2">
-                                <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning"><strong>Toth</strong></p></h1>
+                                <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning text-center"><strong>Toth</strong></p></h1>
                             </div>
                             <form name="frmformulario" onSubmit={this.tryLogin}>
                                 <div className="row mt-3">
