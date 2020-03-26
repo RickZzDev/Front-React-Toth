@@ -1,107 +1,43 @@
 import React,{Component} from 'react'
-import Botao from '../botao'
 import './LoginWeb.css'
 import ImagemToth from '../imagemToth'
-import { doLogin } from '../../services/loginService'
-import '@material/react-text-field/dist/text-field.css'
+import LoginSignIn from '../login/caixaSignIn'
+import MessageStepOne from '../login/messageStepOne'
 
 class Login extends Component{
 
-    constructor() {
+    constructor(){
         super()
-
-        this.state = {
-            statusBotao:'invisible transition-5 h-alert',
-            errorMessage:'**',
-            dadosLogin: {
-                login: '',
-                senha: ''
-            },
-            mensagemErro: {
-                inputLogin: '',
-                inputSenha: '',
-            }
-        }
-    }
-
-    capturarDadosCampos = (event) => {
-        const { name, value } = event.target;
-
-        this.setState({dadosLogin: {
-            ...this.state.dadosLogin,
-            [name] : value
-        }});
-    }
-
-    tryLogin = async (event) => {
-        event.preventDefault()
-        console.log(event)
-        const response = await doLogin(this.state.dadosLogin);
-        const jsonResponse = await response.json();
-        
-        console.log(jsonResponse.mensagem)
-
-        if(response.status === 200){
-            alert("Logado com sucesso!")
-        }
-        else if(response.status === 404)
-            this.setState({mensagemErro: {
-                ...this.state.mensagemErro,
-                inputLogin: jsonResponse.status
-            },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem
-        
-        })
-
-        else if(response.status === 400)
-            this.setState({mensagemErro: {
-                ...this.state.mensagemErro,
-                inputSenha: jsonResponse.status
-            },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem})
-
-    }
+        this.componenteLogin = React.createRef();
     
+    }
+
+    animacao = async () =>{
+        var element =await this.componenteLogin.current
+        element.fadeOut()
+    }   
+
     render(){
          return(
              <div className="height-100 opacidade">
-                <div className="opacidade height-100 pt-5">
-                    <div className="container bg-light div_login ">
+                <div className="opacidade height-100 pt-5 ">
+                    <div className="container bg-light div_login rounded animAparecer ">
                         <div className="row divComponentLogin">
-                            <div className="col-lg-6 bg-primary" >
-
-                            </div>
-                            <div className="col-lg-6 bg-transparent p-5" >
-                                <div className="row mt-2">
-                                    <h1 className="mx-auto text-primary">Bem Vindo<p className="text-warning text-center"><strong>Toth</strong></p></h1>
+                            <div className="col-lg-7 bg-primary" >
+                                <div className="row">
+                                    <div className="col-3">
+                                        <ImagemToth/>
+                                    </div>
+                                        <div className="col colorCinza fsTothPlataform pt-4">
+                                        <strong>Toth Plataform</strong>
+                                    </div>
                                 </div>
-                                <form name="frmformulario" onSubmit={this.tryLogin}>
-                                    <div className="row mt-3">
-                                        <div className="form-group text-left  col-12">
-                                        <TextField
-                                            outlined
-                                            label='Name'
-                                            >
-                                            <Input
-                                                value={this.state.value}
-                                                onChange={(e) => this.setState({value: e.currentTarget.value})} />
-                                        </TextField>
-                                        <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
-                                            {this.state.errorMessage}
-                                        </div>
-                                            <label className="ml-2">Login:</label>
-                                            <input type="text" name="login" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
-                                        </div>
-                                    </div>
-                                    <div className="row mt-3">
-                                        <div className="form-group text-left col-12">
-                                            <label className="ml-2">Senha:</label>
-                                            <input type="password" name="senha" onChange={this.capturarDadosCampos} className="form-control rounded-pill"/>
-                                        </div>
-                                    </div>
-                                    <div className="row pr-3 pl-3 mb-2 " >
-                                        <Botao value="Login" color=" btn-warning rounded-pill"/>
-                                    </div>
-                                    <span className="text-primary">Esqueceu a senha?</span><span className="text-warning">  Clique aqui</span> 
-                                </form>
+                                <MessageStepOne />
+                                <input type="button" value="aa" onClick={this.animacao}></input>
+                            </div>
+                            
+                            <div className="col-lg-5 bg-transparent p-5" >
+                                <LoginSignIn ref={this.componenteLogin}/>
                             </div>                  
                         </div>
                     </div>
