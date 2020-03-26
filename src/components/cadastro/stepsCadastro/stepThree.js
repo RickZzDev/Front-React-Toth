@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Inputs from '../../inputs'
 import Botao from '../../botao'
 
-class Step3 extends Component{
+class StepThree extends Component{
 
     constructor(){
         super()
@@ -31,4 +31,4 @@ class Step3 extends Component{
     }
 }
 
-export default Step3
+export default StepThree

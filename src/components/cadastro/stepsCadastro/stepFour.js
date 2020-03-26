@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Botao from '../../botao'
 
-class Step4 extends Component{
+class StepFour extends Component{
 
     constructor(){
         super()
@@ -19,4 +19,4 @@ class Step4 extends Component{
     }
 }
 
-export default Step4
+export default StepFour

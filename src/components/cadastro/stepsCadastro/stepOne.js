@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import Botao from '../../botao'
 import Input from '../../inputs'
 
-class Step1 extends Component{
+class StepOne extends Component{
 
     constructor(){
         super()
@@ -13,7 +13,7 @@ class Step1 extends Component{
 
     render(){
         return(
-            <div className="container bg-light p-2 pr-4 pl-4 pt-5 pb-5">
+            <div className="col-6">
                 <div className="row">
                     <Input label="Nome da instituição" />
                 </div>
@@ -30,4 +30,4 @@ class Step1 extends Component{
     }
 }
 
-export default Step1
+export default StepOne
