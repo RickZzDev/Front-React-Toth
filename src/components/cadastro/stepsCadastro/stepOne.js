@@ -13,17 +13,12 @@ class StepOne extends Component{
 
     render(){
         return(
-            <div className="col-6">
+            <div className="container">
                 <div className="row">
-                    <Input label="Nome da instituição" />
+                    <Input label="Nome da instituição" name="nome" placeholder="Nome da instituição" colorBorder="border-primary"/>
                 </div>
                 <div className="row">
-                    <Input label="CNPJ"/>
-                </div>
-                  <div className="row">
-                      <div className=" ml-auto mt-5 col-2">
-                        <Botao value="Proximo" color=" btn-primary rounded-pill"/>
-                      </div>
+                    <Input type="text" label="CNPJ" name="cnjp" placeholder="Cnpj" colorBorder="border-primary"/>
                 </div>
             </div>
         )
