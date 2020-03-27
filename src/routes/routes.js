@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {BrowserRouter as Router, Switch,Route,Redirect} from 'react-router-dom'
 import Botao from '../components/botao'
 import Login from '../components/login/LoginWeb'
-import Cadastro from '../components/cadastro/Cadastro'
+import StepsLogInSignUp from '../components/cadastro/StepsLogInSignUp'
 import StepOne from '../components/cadastro/stepsCadastro/stepOne'
 import StepTwo from '../components/cadastro/stepsCadastro/stepTwo'
 import StepThree from '../components/cadastro/stepsCadastro/stepThree'
@@ -20,7 +20,7 @@ const Routes  = () =>(
     <Router>
         <Switch>
             <Route path='/login' component={Login} />
-            <Route path='/cadastro' component={Cadastro} />
+            <Route path='/StepsLogInSignUp' component={StepsLogInSignUp} />
             <Route path='/step1' component={StepOne} />
             <Route path='/step2' component={StepTwo} />
             <Route path='/step3' component={StepThree} />

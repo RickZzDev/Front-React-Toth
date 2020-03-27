@@ -3,10 +3,9 @@ import './LoginWeb.css'
 
 
 
-class messageStep1 extends Component{
-    
-    render(){
-         return(
+    function messageStep1(props){
+        const mudaStatus = props.mudaStatus
+        return(
             <div className="" >
                 <div className="row  text-light  mt-5">
                     <h1 className="mx-auto">Hey There!</h1>
@@ -21,11 +20,12 @@ class messageStep1 extends Component{
                     <h6 className="mx-auto colorCinza">Do you have account?</h6>
                 </div>
                 <div className="row text-light pt-2 pb-2  mt-5">
-                    <button type="button" className="btnSignUp btn btn-primary pr-5 pl-5 bg-transparent border-light mx-auto rounded-pill">Sign Up</button>
+                    <button type="button" onClick={()=>mudaStatus('two')} className="btnSignUp btn btn-primary pr-5 pl-5 bg-transparent border-light mx-auto rounded-pill">Sign Up</button>
                 </div>
         </div>
          )
     }
-}
+    
+  
 
 export default messageStep1

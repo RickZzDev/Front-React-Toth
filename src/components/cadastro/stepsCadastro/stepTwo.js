@@ -2,19 +2,10 @@ import React,{Component} from 'react'
 import Botao from '../../botao'
 import Input from '../../inputs'
 
-class StepTwo extends Component{
-
-    constructor(){
-        super()
-
-        this.state = {}
-    }
-
-
-    render(){
-        return(
+    function StepTwo(){
+        return (
             <div>
-                <div className="container bg-light p-2 pr-4 pl-4 pt-5 pb-5">
+                <div className="container bg-light p-2 pr-4 pl-4 pt-5 pb-5  animAparecer">
                     <div className="row">
                         <Input label="CEP" />
                     </div>
@@ -39,7 +30,6 @@ class StepTwo extends Component{
                 </div>
             </div>
         )
-    }
-}
+    }         
 
 export default StepTwo

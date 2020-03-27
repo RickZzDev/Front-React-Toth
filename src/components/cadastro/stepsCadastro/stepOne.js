@@ -2,32 +2,41 @@ import React,{Component} from 'react'
 import Botao from '../../botao'
 import Input from '../../inputs'
 
-class StepOne extends Component{
 
-    constructor(){
-        super()
-
-        this.state = {}
-    }
-
-
-    render(){
-        return(
-            <div className="col-6">
-                <div className="row">
-                    <Input label="Nome da instituição" />
+function StepOne({status,mudaStatus}){
+    return(
+            <div className= "animAparecer" >
+                <div className="row mt-2">
+                    <h3 className="text-primary">Sign Up</h3>
                 </div>
-                <div className="row">
-                    <Input label="CNPJ"/>
-                </div>
-                  <div className="row">
-                      <div className=" ml-auto mt-5 col-2">
-                        <Botao value="Proximo" color=" btn-primary rounded-pill"/>
-                      </div>
-                </div>
+                <form name="frmformulario" onSubmit={event => {
+                    event.preventDefault()
+                    mudaStatus('three')
+                }}>
+                    <div className="row">
+                        <div className="form-group text-left  pl-0 pr-0  col-12">
+                            {/* <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
+                                {this.state.errorMessage}
+                            </div> */}
+                                <Input label="Nome da instituição" />
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="form-group text-left pl-0 pr-0 col-12">
+                            <Input label="CNPJ"  />
+                        </div>
+                    </div>
+                    <div className="row pr-3 pl-3 mb-2" >
+                        <Botao value="Próximo" color=" btn-primary rounded-pill"/>
+                    </div>
+                </form>
             </div>
         )
-    }
+
 }
+
+        
+    
+
 
 export default StepOne
