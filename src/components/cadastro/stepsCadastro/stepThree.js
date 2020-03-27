@@ -1,19 +1,10 @@
 import React, {Component} from 'react'
 import Inputs from '../../inputs'
-import Botao from '../../botao'
+import '../../login/LoginWeb.css'
 
-class StepThree extends Component{
-
-    constructor(){
-        super()
-
-        this.state = {}
-    }
-
-
-    render(){
+    function StepThree(){
         return(
-            <div className="container">
+            <div className="container animAparecer">
                 <div className="row">
                     <Inputs name="email" label="Email:" type="text" />
                 </div>
@@ -29,6 +20,7 @@ class StepThree extends Component{
             </div>
         )
     }
-}
+    
+ 
 
 export default StepThree

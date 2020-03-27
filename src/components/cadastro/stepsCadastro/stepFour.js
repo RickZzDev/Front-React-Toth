@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Botao from '../../botao'
-import './css/style.css'
 
 class StepFour extends Component{
 
