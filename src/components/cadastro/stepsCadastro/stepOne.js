@@ -11,7 +11,7 @@ function StepOne({status,mudaStatus}){
                 </div>
                 <form name="frmformulario" onSubmit={event => {
                     event.preventDefault()
-                    mudaStatus('three')
+                    mudaStatus('three', 2)
                 }}>
                     <div className="row">
                         <div className="form-group text-left  pl-0 pr-0  col-12">

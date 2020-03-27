@@ -12,7 +12,9 @@ class Login extends Component{
         super()
         this.componenteLogin = React.createRef();
         this.state = {
-            status:'LogIn'
+            status:'LogIn',
+            visibility:'invisible',
+            progressCount:25
         }
     }
 
@@ -21,8 +23,13 @@ class Login extends Component{
         element.fadeOut()
     }   
 
-    mudaStatus = (params) => {
-        this.setState({status:params})
+    mudaStatus = (params,numero) => {
+        this.setState({status:params,visibility:'visible'})
+        this.aumentaProgress(numero)
+    }
+
+    aumentaProgress = (numero) =>{
+        this.setState({progressCount:25*numero})
     }
 
     render(){
@@ -40,10 +47,13 @@ class Login extends Component{
                                         <strong>Toth Plataform</strong>
                                     </div>
                                 </div>
-                                <HolderMessage mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <div className={'progress mt-3 ' + this.state.visibility}>
+                                    <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
+                                </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

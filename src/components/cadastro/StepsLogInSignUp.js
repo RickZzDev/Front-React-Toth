@@ -10,6 +10,7 @@ import LogIn from '../login/caixaSignIn'
 function StepsLogInSignUp(props){
     const status = props.status
     const mudaStatus = props.mudaStatus
+    
 
     if(status == 'LogIn'){
         return <LogIn />
