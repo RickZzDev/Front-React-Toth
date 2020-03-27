@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Botao from '../../botao'
+import './css/style.css'
 
 class StepFour extends Component{
 
@@ -12,8 +13,7 @@ class StepFour extends Component{
 
     render(){
         return(
-            <div>
-
+            <div className="container">
             </div>
         )
     }

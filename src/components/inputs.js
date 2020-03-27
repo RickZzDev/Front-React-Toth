@@ -6,7 +6,7 @@ class Inputs extends Component {
         return(
             <div className="form-group col-12">
                 <label>{this.props.label}</label>
-                <input type={this.props.type} name={this.props.name} onChange={this.capturarDadosCampos} className="form-control"/>
+                <input type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} className={"form-control " + this.props.colorBorder}/>
             </div>
         )
     }

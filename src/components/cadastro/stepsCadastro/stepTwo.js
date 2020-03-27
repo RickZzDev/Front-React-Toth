@@ -10,21 +10,24 @@ import Input from '../../inputs'
                         <Input label="CEP" />
                     </div>
                     <div className="row">
-                        <div className="col-8 pl-0">
+                        <div className="col-10 pl-0">
                             <Input label="Logradouro" />
                         </div>
-                        <div className="col-4 pr-0">
+                        <div className="col-2 pr-0">
                             <Input label="Nº" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-8 pl-0">
-                            <Input label="Logradouro" />
+                            <Input label="Bairro" />
                         </div>
                     </div>
                     <div className="row">
-                        <div className=" ml-auto mt-5 col-2">
-                            <Botao value="Proximo" color=" btn-primary rounded-pill"/>
+                        <div className="col-10 pl-0">
+                            <Input label="Cidade" />
+                        </div>
+                        <div className="col-2 pl-0">
+                            <Input label="UF" />
                         </div>
                     </div>
                 </div>
