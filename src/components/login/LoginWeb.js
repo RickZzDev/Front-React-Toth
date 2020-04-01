@@ -5,6 +5,7 @@ import LoginSignIn from '../login/caixaSignIn'
 import MessageStepOne from '../login/messageStepOne'
 import StepsLogInSignUp from '../cadastro/StepsLogInSignUp'
 import HolderMessage from './HolderMessage'
+import ContagemProgress from './contagemProgress'
 
 class Login extends Component{
 
@@ -14,7 +15,13 @@ class Login extends Component{
         this.state = {
             status:'LogIn',
             visibility:'invisible',
-            progressCount:25
+            progressCount:1,
+            currentStep:'15',
+            color:'bg-light',
+            passedStep:'12',
+            step1:'bg-light',
+            step2:'bg-light',
+            step3:'bg-light'
         }
     }
 
@@ -26,9 +33,23 @@ class Login extends Component{
     mudaStatus = (params,numero) => {
         this.setState({status:params,visibility:'visible'})
         this.aumentaProgress(numero)
+        
+        console.log(this.state.status)
+        if(this.state.status == 'LogIn'){
+            this.state.step1 = 'bg-warning'
+        }
+
+        if(this.state.status == 'two'){
+            this.state.step2 = 'bg-warning'
+        }
+
     }
 
-    aumentaProgress = (numero) =>{
+    aumentaIndicador = (step) =>{
+        
+    }
+
+    aumentaProgress = async (numero) =>{
         this.setState({progressCount:25*numero})
     }
 
@@ -48,8 +69,11 @@ class Login extends Component{
                                     </div>
                                 </div>
                                 <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <div className={ "container mt-3 "  + this.state.visibility}>
+                                    <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3}/>
+                                </div>
                                 <div className={'progress mt-3 ' + this.state.visibility}>
-                                    <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
+                                    <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >

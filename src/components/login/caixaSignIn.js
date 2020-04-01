@@ -32,22 +32,21 @@ class LoginSignIn extends Component{
         })
     }
 
-    capturarDadosCampos = (event) => {
-        const { name, value } = event.target;
 
-        this.setState({dadosLogin: {
-            ...this.state.dadosLogin,
-            [name] : value
-        }});
+    guardaDados(login,senha){
+
     }
+
 
     tryLogin = async (event) => {
         event.preventDefault()
         console.log(event)
+        console.log(this.state.dadosLogin)
         const response = await doLogin(this.state.dadosLogin);
         const jsonResponse = await response.json();
         
         console.log(jsonResponse.mensagem)
+        console.log(jsonResponse)
 
         if(response.status === 200){
             alert("Logado com sucesso!")
@@ -55,7 +54,6 @@ class LoginSignIn extends Component{
         else if(response.status === 404)
             this.setState({mensagemErro: {
                 ...this.state.mensagemErro,
-                inputLogin: jsonResponse.status
             },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem
         
         })
@@ -63,7 +61,6 @@ class LoginSignIn extends Component{
         else if(response.status === 400)
             this.setState({mensagemErro: {
                 ...this.state.mensagemErro,
-                inputSenha: jsonResponse.status
             },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem})
 
     }
@@ -76,16 +73,16 @@ class LoginSignIn extends Component{
                 </div>
                 <form name="frmformulario" onSubmit={this.tryLogin}>
                     <div className="row">
-                        <div className="form-group col-12">
+                        <div className="col-12">
                             <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div>
-                                <Input placeholder="login" onChange={this.capturarDadosCampos} />
+                                <Input placeholder="login"/>
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="form-group col-12">
-                            <Input placeholder="senha" onChange={this.capturarDadosCampos} />
+                        <div className="col-12">
+                            <Input placeholder="senha"/>
                         </div>
                     </div>
                     <div className="row ">

@@ -17,7 +17,7 @@ function StepsLogInSignUp(props){
     }if(status == 'two'){
         return <StepOne status={status} mudaStatus={mudaStatus} />
     }if(status == 'three'){
-        return <StepThree status={status} mudaStatus={mudaStatus} />
+        return <StepTwo status={status} mudaStatus={mudaStatus} />
     }
 }
       
