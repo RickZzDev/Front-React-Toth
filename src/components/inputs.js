@@ -8,7 +8,7 @@ class Inputs extends Component {
             <div className="col-12">
                 <div className="container-toth-input">
                     <label></label>
-                    <input type={this.props.type} name={this.props.name} required className="input-toth"/>
+                    <input type={this.props.type} name={this.props.name} required className="input-toth "/>
                     <span className={"placeholder-" + this.props.placeholder}></span>
                 </div>
             </div>
