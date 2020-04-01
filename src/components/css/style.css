@@ -1,0 +1,118 @@
+.container-toth-input {
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-toth {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: 0;
+    background-color: #f8f9fa;
+    position: absolute;
+    padding-left: 2px;
+    padding-top: 12px;
+    box-sizing: border-box;
+    border-bottom: 2px solid #aaabad;
+    width: 100%;
+    font-size: 16px;
+    font-family: sans-serif;
+    height: 60px;
+}
+
+.placeholder-nome::after, .placeholder-login::after, .placeholder-senha::after, 
+.placeholder-email::after, .placeholder-confirm-senha::after, .placeholder-cnpj::after,
+.placeholder-cep::after, .placeholder-logradouro::after, .placeholder-bairro::after,
+.placeholder-cidade::after, .placeholder-estado::after, .placeholder-numero::after  {
+    position: absolute;
+    color: #969696;
+    left: 2px;
+    top: 38px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    font-family: 'sans-serif';
+    transition: 0.4s;
+}
+
+.placeholder-nome::after {
+    content: 'Nome';
+}
+
+.placeholder-cnpj::after {
+    content: 'CNPJ';
+}
+.placeholder-cep::after {
+    content: 'CEP';
+}
+.placeholder-logradouro::after {
+    content: 'Logradouro';
+}
+.placeholder-numero::after {
+    content: 'Nº';
+}
+.placeholder-bairro::after {
+    content: 'Bairro';
+}
+.placeholder-cidade::after {
+    content: 'Cidade';
+}
+.placeholder-estado::after {
+    content: 'UF';
+}
+.placeholder-email::after {
+    content: 'Email';
+}
+.placeholder-login::after {
+    content: 'Login';
+}
+.placeholder-senha::after {
+    content: 'Senha';
+}
+.placeholder-confirm-senha::after {
+    content: 'Confirmar senha';
+}
+
+.input-toth:focus ~ .placeholder-nome::after,
+.input-toth:valid ~ .placeholder-nome::after,
+.input-toth:focus ~ .placeholder-senha::after,
+.input-toth:valid ~ .placeholder-senha::after,
+.input-toth:focus ~ .placeholder-cnpj::after,
+.input-toth:valid ~ .placeholder-cnpj::after,
+.input-toth:focus ~ .placeholder-cep::after,
+.input-toth:valid ~ .placeholder-cep::after,
+.input-toth:focus ~ .placeholder-logradouro::after,
+.input-toth:valid ~ .placeholder-logradouro::after,
+.input-toth:focus ~ .placeholder-estado::after,
+.input-toth:valid ~ .placeholder-estado::after,
+.input-toth:focus ~ .placeholder-bairro::after,
+.input-toth:valid ~ .placeholder-bairro::after,
+.input-toth:focus ~ .placeholder-cidade::after,
+.input-toth:valid ~ .placeholder-cidade::after,
+.input-toth:focus ~ .placeholder-numero::after,
+.input-toth:valid ~ .placeholder-numero::after,
+.input-toth:focus ~ .placeholder-confirm-senha::after,
+.input-toth:valid ~ .placeholder-confirm-senha::after,
+.input-toth:focus ~ .placeholder-email::after,
+.input-toth:valid ~ .placeholder-email::after,
+.input-toth:focus ~ .placeholder-login::after,
+.input-toth:valid ~ .placeholder-login::after {
+    font-weight: bold;
+    font-size: 12px;
+    top: 12px;
+    color: #4481e3;
+}
+
+.input-toth:focus, .input-toth:valid {
+    border-bottom: 2px solid #4481e3;
+}
+
+.margin-toth {
+    margin-top: 50px;
+}

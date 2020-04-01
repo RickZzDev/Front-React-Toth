@@ -18,12 +18,12 @@ function StepOne({status,mudaStatus}){
                             {/* <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div> */}
-                                <Input label="Nome da instituição" />
+                                <Input name="nome" placeholder="nome" />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="form-group text-left pl-0 pr-0 col-12">
-                            <Input label="CNPJ"  />
+                        <div className="form-group mt-4 text-left pl-0 pr-0 col-12">
+                            <Input name="cnpj" placeholder="cnpj" />
                         </div>
                     </div>
                     <div className="row pr-3 pl-3 mb-2" >

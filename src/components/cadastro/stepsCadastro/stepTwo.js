@@ -7,27 +7,27 @@ import Input from '../../inputs'
             <div>
                 <div className="container bg-light p-2 pr-4 pl-4 pt-5 pb-5  animAparecer">
                     <div className="row">
-                        <Input label="CEP" />
+                        <Input placeholder="cep" />
                     </div>
                     <div className="row">
                         <div className="col-10 pl-0">
-                            <Input label="Logradouro" />
+                            <Input placeholder="logradouro" />
                         </div>
                         <div className="col-2 pr-0">
-                            <Input label="Nº" />
+                            <Input placeholder="numero" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-8 pl-0">
-                            <Input label="Bairro" />
+                            <Input placeholder="bairro" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-10 pl-0">
-                            <Input label="Cidade" />
+                            <Input placeholder="cidade" />
                         </div>
                         <div className="col-2 pl-0">
-                            <Input label="UF" />
+                            <Input placeholder="estado" />
                         </div>
                     </div>
                 </div>

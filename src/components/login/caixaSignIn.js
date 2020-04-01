@@ -71,21 +71,21 @@ class LoginSignIn extends Component{
     render(){
          return(
             <div className= "" >
-                <div className="row mt-2">
+                <div className="row mt-2 mb-1">
                     <h3 className="text-primary">Sign In</h3>
                 </div>
                 <form name="frmformulario" onSubmit={this.tryLogin}>
                     <div className="row">
-                        <div className="form-group text-left  pl-0 pr-0  col-12">
+                        <div className="form-group col-12">
                             <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div>
-                                <Input label="Login" onChange={this.capturarDadosCampos} />
+                                <Input placeholder="login" onChange={this.capturarDadosCampos} />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="form-group text-left pl-0 pr-0 col-12">
-                            <Input label="Senha" onChange={this.capturarDadosCampos} />
+                        <div className="form-group col-12">
+                            <Input placeholder="senha" onChange={this.capturarDadosCampos} />
                         </div>
                     </div>
                     <div className="row ">
