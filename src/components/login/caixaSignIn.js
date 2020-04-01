@@ -73,11 +73,11 @@ class LoginSignIn extends Component{
                 </div>
                 <form name="frmformulario" onSubmit={this.tryLogin}>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-12 ">
                             <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div>
-                                <Input placeholder="login"/>
+                            <Input placeholder="login"/>
                         </div>
                     </div>
                     <div className="row mt-3">
