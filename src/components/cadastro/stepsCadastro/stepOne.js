@@ -20,7 +20,7 @@ function StepOne({status,mudaStatus,guardaDados}){
                     </div>
                     <div className="row">
                         <div className="form-group text-left pl-0 pr-0 col-12">
-                            <Input name="cnpj" guardaDados={guardaDadosCadastro} placeholder="cnpj" />
+                            <Input name="cnpj" guardaDados={guardaDados} placeholder="cnpj" />
                         </div>
                     </div>
                     <div className="row pr-3 pl-3 mb-2" >
