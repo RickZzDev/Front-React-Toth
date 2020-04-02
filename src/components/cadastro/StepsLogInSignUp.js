@@ -10,28 +10,9 @@ import LogIn from '../login/caixaSignIn'
 function StepsLogInSignUp(props){
     const status = props.status
     const mudaStatus = props.mudaStatus
-    
-    var json = {
-        "nome":'',
-        "cnpj":'',
-        'cep':'',
-        'logradouro':'',
-        'numero':'',
-        'bairro':'',
-        'cidade':'',
-        'uf':'',
-        'email':'',
-        'login':'',
-        'senha':''
-    }
-
-    function guardaDadosCadastro(event){
-        const {name,value} = event.target
-        json[{name}] = value
-        console.log(json[{name}])
-    }
-
-
+    const guardaDadosCadastro = props.guardaDados
+    const mostraJson = props.mostraJson
+    const guardaEndereco = props.guardaEndereco
 
     if(status == 'LogIn'){
         return <LogIn />
@@ -41,7 +22,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepOne status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepOne status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }if(status == 'three'){
@@ -50,7 +31,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-2">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepTwo status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepTwo status={status} mudaStatus={mudaStatus} mostraJson={mostraJson}  guardaDados={guardaEndereco} />
                 </div>
         )
     } if(status == 'four') {
@@ -59,7 +40,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepThree status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepThree status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }

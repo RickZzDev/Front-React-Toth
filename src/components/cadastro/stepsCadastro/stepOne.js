@@ -3,7 +3,7 @@ import Botao from '../../botao'
 import Input from '../../inputs'
 
 
-function StepOne({status,mudaStatus,guardaDados}){
+function StepOne({status,mudaStatus,guardaDados,mostraJson}){
     return(
             <div>
                 <form name="frmformulario" onSubmit={event => {
@@ -15,16 +15,16 @@ function StepOne({status,mudaStatus,guardaDados}){
                             {/* <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div> */}
-                                <Input name="nome" guardaDados={guardaDados} placeholder="nome" />
+                                <Input name="nome"  guardaDados={guardaDados} placeholder="nome" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-group text-left pl-0 pr-0 col-12">
-                            <Input name="cnpj" guardaDados={guardaDados} placeholder="cnpj" />
+                            <Input name="cnpj" type="number" guardaDados={guardaDados} placeholder="cnpj" />
                         </div>
                     </div>
                     <div className="row pr-3 pl-3 mb-2" >
-                        <Botao value="Próximo" color=" btn-primary rounded-pill"/>
+                        <Botao value="Próximo" mostraJson={mostraJson} color=" btn-primary rounded-pill"/>
                     </div>
                 </form>
             </div>    

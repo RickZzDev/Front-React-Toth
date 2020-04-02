@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
-class Botao extends Component {
 
-    render() {
-        return(
-            <input type="submit" value={this.props.value}  className={"btn btn-block" + this.props.color}/>
-        );
-    }
-
+function Botao({value,color,mostraJson}){
+    return(
+        <input type="submit" onClick={mostraJson} value={value}  className={"btn btn-block" + color}/>
+    );
 }
-
+  
 export default Botao;

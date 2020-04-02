@@ -3,7 +3,7 @@ import Botao from '../../botao'
 import Input from '../../inputs'
 
    
-    function StepTwo({mudaStatus,guardaDados}){
+    function StepTwo({mudaStatus,guardaDados,mostraJson}){
         return (
             <div>
                 <form name="frmformulario" onSubmit={event => {
@@ -13,33 +13,33 @@ import Input from '../../inputs'
                     <div className="container  p-2 pr-4 pl-4 pt-1 pb-5  animAparecer">
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="cep" guardaDados={guardaDados} />
+                                <Input placeholder="cep" type="number" name="cep" guardaDados={guardaDados} endereco={true} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="logradouro" guardaDados={guardaDados} />
+                                <Input placeholder="logradouro" name="logradouro" guardaDados={guardaDados} />
                             </div>
                             <div className="col-2 pl-0">
-                                <Input placeholder="numero" guardaDados={guardaDados} />
+                                <Input placeholder="numero" type="number" name="numero" guardaDados={guardaDados} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="bairro" guardaDados={guardaDados} />
+                                <Input placeholder="bairro" name="bairro" guardaDados={guardaDados} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="cidade" guardaDados={guardaDados} />
+                                <Input placeholder="cidade" name="cidade" guardaDados={guardaDados} />
                             </div>
                             <div className="col-2  pl-0">
-                                <Input placeholder="estado" guardaDados={guardaDados} />
+                                <Input placeholder="estado" maxLength={2} name="estado" guardaDados={guardaDados} />
                             </div>
                         </div>
                     </div>
                     <div className="row pr-3 pl-3 mb-2" >
-                        <Botao value="Próximo" color=" btn-primary rounded-pill"/>
+                        <Botao value="Próximo" mostraJson={mostraJson} color=" btn-primary rounded-pill"/>
                     </div>
                 </form>
             </div>

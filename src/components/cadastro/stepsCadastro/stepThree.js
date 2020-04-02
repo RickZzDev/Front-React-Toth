@@ -3,7 +3,7 @@ import Inputs from '../../inputs'
 import '../../login/LoginWeb.css'
 import Botao from '../../botao'
 
-    function StepThree({mudaStatus, guardaDados}){
+    function StepThree({mudaStatus, guardaDados,mostraJson}){
         return(
             <form name="frmformulario" onSubmit={event => {
                 event.preventDefault()
@@ -11,7 +11,7 @@ import Botao from '../../botao'
                 }}>
                 <div className="container animAparecer">
                     <div className="row">
-                        <Inputs name="email" placeholder="email" type="text" guardaDados={guardaDados} />
+                        <Inputs name="email" type="email" placeholder="email" type="text" guardaDados={guardaDados} />
                     </div>
                     <div className="row">
                         <Inputs name="login" placeholder="login" type="text" guardaDados={guardaDados}  />
@@ -24,7 +24,7 @@ import Botao from '../../botao'
                     </div>
                 </div>
                 <div className="row pr-3 mt-5 pl-3 mb-2" >
-                    <Botao value="Próximo" color=" btn-primary rounded-pill"/>
+                    <Botao value="Finalizar" mostraJson={mostraJson} color=" btn-primary rounded-pill"/>
                 </div>
             </form>
         )
