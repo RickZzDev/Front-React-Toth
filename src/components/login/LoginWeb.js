@@ -21,7 +21,8 @@ class Login extends Component{
             passedStep:'12',
             step1:'bg-light',
             step2:'bg-light',
-            step3:'bg-light'
+            step3:'bg-light',
+            step4:'bg-light'
         }
     }
 
@@ -44,6 +45,9 @@ class Login extends Component{
             case "three":
                 this.state.step3 = 'bg-warning'
                 break;
+            case "four":
+                this.state.step4 = 'bg-warning'
+                break;    
         }
 
     }
@@ -73,7 +77,7 @@ class Login extends Component{
                                 </div>
                                 <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
                                 <div className={ "container mt-3 "  + this.state.visibility}>
-                                    <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3}/>
+                                    <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3} step4={this.state.step4}/>
                                 </div>
                                 <div className={'progress mt-3 ' + this.state.visibility}>
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>

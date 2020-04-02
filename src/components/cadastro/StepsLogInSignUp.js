@@ -19,7 +19,10 @@ function StepsLogInSignUp(props){
         'numero':'',
         'bairro':'',
         'cidade':'',
-        'uf':''
+        'uf':'',
+        'email':'',
+        'login':'',
+        'senha':''
     }
 
     function guardaDadosCadastro(event){
@@ -38,7 +41,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepOne status={status} mudaStatus={mudaStatus} />
+                    <StepOne status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }if(status == 'three'){
@@ -47,7 +50,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepTwo status={status} mudaStatus={mudaStatus} />
+                    <StepTwo status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     } if(status == 'four') {
@@ -56,7 +59,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepThree status={status} mudaStatus={mudaStatus} />
+                    <StepThree status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Inputs from '../../inputs'
 import '../../login/LoginWeb.css'
 
-    function StepThree({mudaStatus}){
+    function StepThree({mudaStatus, guardaDados}){
         return(
             <form name="frmformulario" onSubmit={event => {
                 event.preventDefault()
@@ -10,16 +10,16 @@ import '../../login/LoginWeb.css'
                 }}>
                 <div className="container animAparecer">
                     <div className="row">
-                        <Inputs name="email" label="Email:" type="text" />
+                        <Inputs name="email" placeholder="email" type="text" guardaDados={guardaDados} />
                     </div>
                     <div className="row">
-                        <Inputs name="login" label="Login:" type="text" />
+                        <Inputs name="login" placeholder="login" type="text" guardaDados={guardaDados}  />
                     </div>
                     <div className="row">
-                        <Inputs name="senha" label="Senha:" type="password" />
+                        <Inputs name="senha" placeholder="senha" type="password" guardaDados={guardaDados}  />
                     </div>
                     <div className="row">
-                        <Inputs name="confirm-senha" label="Confirmar Senha:" type="password" />
+                        <Inputs name="confirm-senha" placeholder="confirm-senha" type="password" guardaDados={guardaDados}  />
                     </div>
                 </div>
             </form>

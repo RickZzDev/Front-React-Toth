@@ -6,6 +6,7 @@ function ContagemProgress(props){
     var step1 = props.step1
     var step2 = props.step2
     var step3 = props.step3
+    var step4 = props.step4
 
     return(
         <div className="row d-flex justify-content-between">
@@ -17,6 +18,9 @@ function ContagemProgress(props){
             </div>
             <div className="col-1">
                 <div className={ step3  + " transition-5 rounded-circle text-center"} >3</div>
+            </div>
+            <div className="col-1">
+                <div className={ step4  + " transition-5 rounded-circle text-center"} >4</div>
             </div>
         </div>
     )
