@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Inputs from '../../inputs'
 import '../../login/LoginWeb.css'
+import Botao from '../../botao'
 
     function StepThree({mudaStatus, guardaDados}){
         return(
@@ -21,6 +22,9 @@ import '../../login/LoginWeb.css'
                     <div className="row">
                         <Inputs name="confirm-senha" placeholder="confirm-senha" type="password" guardaDados={guardaDados}  />
                     </div>
+                </div>
+                <div className="row pr-3 mt-5 pl-3 mb-2" >
+                    <Botao value="Próximo" color=" btn-primary rounded-pill"/>
                 </div>
             </form>
         )

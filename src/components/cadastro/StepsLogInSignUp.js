@@ -47,7 +47,7 @@ function StepsLogInSignUp(props){
     }if(status == 'three'){
         return (
                 <div className="animAparecer">
-                    <div className="row mt-2">
+                    <div className="row mt-2 mb-2">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
                     <StepTwo status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
@@ -56,7 +56,7 @@ function StepsLogInSignUp(props){
     } if(status == 'four') {
         return (
                 <div className="animAparecer">
-                    <div className="row mt-2">
+                    <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
                     <StepThree status={status} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
