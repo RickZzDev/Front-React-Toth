@@ -85,7 +85,7 @@ class LoginSignIn extends Component{
                             <Input placeholder="senha"/>
                         </div>
                     </div>
-                    <div className="row ">
+                    <div className="row mt-5">
                         <div className="form-group text-right pl-0 pr-3 col-12">
                             <span className={this.state.fadeOut + " text-primary"} >Forgot your password?</span>
                         </div>

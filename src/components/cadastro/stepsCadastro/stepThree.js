@@ -2,22 +2,27 @@ import React, {Component} from 'react'
 import Inputs from '../../inputs'
 import '../../login/LoginWeb.css'
 
-    function StepThree(){
+    function StepThree({mudaStatus}){
         return(
-            <div className="container animAparecer">
-                <div className="row">
-                    <Inputs name="email" label="Email:" type="text" />
+            <form name="frmformulario" onSubmit={event => {
+                event.preventDefault()
+                mudaStatus('four')
+                }}>
+                <div className="container animAparecer">
+                    <div className="row">
+                        <Inputs name="email" label="Email:" type="text" />
+                    </div>
+                    <div className="row">
+                        <Inputs name="login" label="Login:" type="text" />
+                    </div>
+                    <div className="row">
+                        <Inputs name="senha" label="Senha:" type="password" />
+                    </div>
+                    <div className="row">
+                        <Inputs name="confirm-senha" label="Confirmar Senha:" type="password" />
+                    </div>
                 </div>
-                <div className="row">
-                    <Inputs name="login" label="Login:" type="text" />
-                </div>
-                <div className="row">
-                    <Inputs name="senha" label="Senha:" type="password" />
-                </div>
-                <div className="row">
-                    <Inputs name="confirm-senha" label="Confirmar Senha:" type="password" />
-                </div>
-            </div>
+            </form>
         )
     }
     

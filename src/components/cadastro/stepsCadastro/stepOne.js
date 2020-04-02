@@ -5,32 +5,24 @@ import Input from '../../inputs'
 
 function StepOne({status,mudaStatus}){
     return(
-            <div className= "animAparecer" >
-                <div className="row mt-2">
-                    <h3 className="text-primary">Sign Up</h3>
+            <form name="frmformulario" onSubmit={event => {
+                event.preventDefault()
+                mudaStatus('three', 2)
+            }}>
+                <div className="row">
+                    <div className="form-group text-left  pl-0 pr-0  col-12">
+                            <Input name="nome" placeholder="nome" />
+                    </div>
                 </div>
-                <form name="frmformulario" onSubmit={event => {
-                    event.preventDefault()
-                    mudaStatus('three', 2)
-                }}>
-                    <div className="row">
-                        <div className="form-group text-left  pl-0 pr-0  col-12">
-                            {/* <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
-                                {this.state.errorMessage}
-                            </div> */}
-                                <Input name="nome" placeholder="nome" />
-                        </div>
+                <div className="row mt-3">
+                    <div className="form-group mt-4 text-left pl-0 pr-0 col-12">
+                        <Input name="cnpj" placeholder="cnpj" />
                     </div>
-                    <div className="row mt-3">
-                        <div className="form-group mt-4 text-left pl-0 pr-0 col-12">
-                            <Input name="cnpj" placeholder="cnpj" />
-                        </div>
-                    </div>
-                    <div className="row pr-3 pl-3 mb-2" >
-                        <Botao value="Próximo" color=" btn-primary rounded-pill"/>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div className="row pr-3 pl-3 mb-2" >
+                    <Botao value="Próximo" color=" btn-primary rounded-pill"/>
+                </div>
+            </form>
         )
 
 }

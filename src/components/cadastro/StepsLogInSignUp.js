@@ -10,14 +10,36 @@ import LogIn from '../login/caixaSignIn'
 function StepsLogInSignUp(props){
     const status = props.status
     const mudaStatus = props.mudaStatus
-    
 
     if(status == 'LogIn'){
         return <LogIn />
     }if(status == 'two'){
-        return <StepOne status={status} mudaStatus={mudaStatus} />
+        return (
+                <div className="animAparecer">
+                    <div className="row mt-2">
+                        <h3 className="text-primary">Sign Up</h3>
+                    </div>
+                    <StepOne status={status} mudaStatus={mudaStatus} />
+                </div>
+        )
     }if(status == 'three'){
-        return <StepTwo status={status} mudaStatus={mudaStatus} />
+        return (
+                <div className="animAparecer">
+                    <div className="row mt-2">
+                        <h3 className="text-primary">Sign Up</h3>
+                    </div>
+                    <StepTwo status={status} mudaStatus={mudaStatus} />
+                </div>
+        )
+    } if(status == 'four') {
+        return (
+                <div className="animAparecer">
+                    <div className="row mt-2">
+                        <h3 className="text-primary">Sign Up</h3>
+                    </div>
+                    <StepThree status={status} mudaStatus={mudaStatus} />
+                </div>
+        )
     }
 }
       

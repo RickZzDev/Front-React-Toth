@@ -34,13 +34,16 @@ class Login extends Component{
         this.setState({status:params,visibility:'visible'})
         this.aumentaProgress(numero)
         
-        console.log(this.state.status)
-        if(this.state.status == 'LogIn'){
-            this.state.step1 = 'bg-warning'
-        }
-
-        if(this.state.status == 'two'){
-            this.state.step2 = 'bg-warning'
+        switch(this.state.status) {
+            case "LogIn":
+                this.state.step1 = 'bg-warning'
+                break;
+            case "two":
+                this.state.step2 = 'bg-warning'
+                break;
+            case "three":
+                this.state.step3 = 'bg-warning'
+                break;
         }
 
     }
@@ -77,7 +80,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

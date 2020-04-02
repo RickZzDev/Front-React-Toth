@@ -3,6 +3,7 @@ import './LoginWeb.css'
 import MessageStepOne from './messageStepOne'
 import MessageStepTwo from './messageStepTwo'
 import MessageStepThree from './messageStepThree'
+import MessageStepFour from './messageStepFour'
 
 function HolderMessage(props){
     const status = props.status
@@ -16,8 +17,8 @@ function HolderMessage(props){
         
     }if(status == 'three'){
         return <MessageStepThree />
-    }
-    
+    }if(status == 'four')
+        return <MessageStepFour />
   
             
     
