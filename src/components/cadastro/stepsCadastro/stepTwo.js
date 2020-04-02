@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import Botao from '../../botao'
 import Input from '../../inputs'
 
-    function StepTwo({guardaDadosCadastro}){
+   
     function StepTwo({mudaStatus}){
         return (
             <div>

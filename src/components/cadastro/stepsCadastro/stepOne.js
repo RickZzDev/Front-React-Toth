@@ -5,15 +5,7 @@ import Input from '../../inputs'
 
 function StepOne({status,mudaStatus,guardaDadosCadastro}){
     return(
-            <form name="frmformulario" onSubmit={event => {
-                event.preventDefault()
-                mudaStatus('three', 2)
-            }}>
-                <div className="row">
-                    <div className="form-group text-left  pl-0 pr-0  col-12">
-                            <Input name="nome" placeholder="nome" />
-                    </div>
-                </div>
+            <div>
                 <form name="frmformulario" onSubmit={event => {
                     event.preventDefault()
                     mudaStatus('three', 2)
@@ -35,7 +27,7 @@ function StepOne({status,mudaStatus,guardaDadosCadastro}){
                         <Botao value="Próximo" color=" btn-primary rounded-pill"/>
                     </div>
                 </form>
-            </div>
+            </div>    
         )
 
 }
