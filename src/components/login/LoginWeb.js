@@ -71,12 +71,12 @@ class Login extends Component{
                                     <div className="col-3">
                                         <ImagemToth/>
                                     </div>
-                                        <div className="col colorCinza fsTothPlataform pt-4">
+                                    <div className="col colorCinza fsTothPlataform pt-4">
                                         <strong>Toth Plataform</strong>
                                     </div>
                                 </div>
-                                <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
-                                <div className={ "container mt-3 "  + this.state.visibility}>
+                                <HolderMessage  aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <div className={ "container mt-5 "  + this.state.visibility}>
                                     <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3} step4={this.state.step4}/>
                                 </div>
                                 <div className={'progress mt-3 ' + this.state.visibility}>

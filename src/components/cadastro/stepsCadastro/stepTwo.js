@@ -10,20 +10,22 @@ import Input from '../../inputs'
                 event.preventDefault()
                 mudaStatus('four', 2.6)
                 }}>
-                    <div className="container bg-light p-2 pr-4 pl-4 pt-5 pb-5  animAparecer">
+                    <div className="container  p-2 pr-4 pl-4 pt-1 pb-5  animAparecer">
                         <div className="row">
-                            <Input placeholder="cep" guardaDados={guardaDados} />
+                            <div className="col-10 pl-0">
+                                <Input placeholder="cep" guardaDados={guardaDados} />
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
                                 <Input placeholder="logradouro" guardaDados={guardaDados} />
                             </div>
-                            <div className="col-2 pr-0">
+                            <div className="col-2 pl-0">
                                 <Input placeholder="numero" guardaDados={guardaDados} />
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-8 pl-0">
+                            <div className="col-10 pl-0">
                                 <Input placeholder="bairro" guardaDados={guardaDados} />
                             </div>
                         </div>
@@ -31,7 +33,7 @@ import Input from '../../inputs'
                             <div className="col-10 pl-0">
                                 <Input placeholder="cidade" guardaDados={guardaDados} />
                             </div>
-                            <div className="col-2 pl-0">
+                            <div className="col-2  pl-0">
                                 <Input placeholder="estado" guardaDados={guardaDados} />
                             </div>
                         </div>

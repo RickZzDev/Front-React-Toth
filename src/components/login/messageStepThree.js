@@ -5,13 +5,13 @@ function messageStepThree(){
     return(
         <div className="animAparecer pl-2 pr-2" >
             <div className="row  text-light  mt-5">
-                <h1 className="mx-auto">Quase acabando....</h1>
+                <h1 className="mx-auto">Onde fica sua instituição?</h1>
             </div>
             <div className="row  text-light mt-3">
-                <h4 className="mx-auto">Forneça agora algumas informações </h4>
+                <h4 className="mx-auto">Forneça agora algumas informações sobre </h4>
             </div>
             <div className="row  text-light">
-                <h4 className="mx-auto">sobre a sua conta</h4>
+                <h4 className="mx-auto">a localização da sua escola</h4>
             </div>
         </div>
         )
