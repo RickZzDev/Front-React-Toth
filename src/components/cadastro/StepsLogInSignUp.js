@@ -10,6 +10,25 @@ import LogIn from '../login/caixaSignIn'
 function StepsLogInSignUp(props){
     const status = props.status
     const mudaStatus = props.mudaStatus
+    
+    var json = {
+        "nome":'',
+        "cnpj":'',
+        'cep':'',
+        'logradouro':'',
+        'numero':'',
+        'bairro':'',
+        'cidade':'',
+        'uf':''
+    }
+
+    function guardaDadosCadastro(event){
+        const {name,value} = event.target
+        json[{name}] = value
+        console.log(json[{name}])
+    }
+
+
 
     if(status == 'LogIn'){
         return <LogIn />

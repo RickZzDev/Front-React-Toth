@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import './css/style.css'
 
-class Inputs extends Component {
 
-    render() {
+
+    function Inputs({type,name,placeholder,guardaDados}){
+      
+
         return(
             <div className="col-12">
                 <div className="container-toth-input">
                     <label></label>
-                    <input type={this.props.type} name={this.props.name} required className="input-toth "/>
-                    <span className={"placeholder-" + this.props.placeholder}></span>
+                    <input type={type} onChange={guardaDados} name={name} required className="input-toth "/>
+                    <span className={"placeholder-" + placeholder}></span>
                 </div>
             </div>
         )
     }
-
-}
+    
 
 export default Inputs

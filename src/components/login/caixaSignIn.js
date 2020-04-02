@@ -33,10 +33,10 @@ class LoginSignIn extends Component{
     }
 
 
-    guardaDados(login,senha){
-
+    guardaDados = (event) => {
+        const {name,value} = event.target
+        this.setState({dadosLogin:{...this.state.dadosLogin,[name]:value}})
     }
-
 
     tryLogin = async (event) => {
         event.preventDefault()
@@ -77,12 +77,12 @@ class LoginSignIn extends Component{
                             <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
                                 {this.state.errorMessage}
                             </div>
-                            <Input placeholder="login"/>
+                            <Input placeholder="login" name="login" guardaDados={this.guardaDados} type="text" />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div className="col-12">
-                            <Input placeholder="senha"/>
+                            <Input placeholder="senha" name="senha" guardaDados={this.guardaDados} type="password"/>
                         </div>
                     </div>
                     <div className="row mt-5">
