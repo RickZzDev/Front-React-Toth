@@ -19,7 +19,7 @@ function StepsLogInSignUp(props){
     }if(status == 'two'){
         return (
                 <div className="animAparecer">
-                    <div className="row mt-2 mb-4">
+                    <div className="row mt-2 mb-1">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
                     <StepOne status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />

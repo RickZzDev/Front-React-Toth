@@ -93,6 +93,10 @@ class Login extends Component{
         this.setState({progressCount:25*numero})
     }
 
+    animationRegistroConcluido = () => {
+        
+    }
+
     render(){
          return(
              <div className="height-100 opacidade">

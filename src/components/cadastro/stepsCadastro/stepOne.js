@@ -10,15 +10,12 @@ function StepOne({status,mudaStatus,guardaDados,mostraJson}){
                     event.preventDefault()
                     mudaStatus('three', 1.4)
                 }}>
-                    <div className="row">
+                    <div className="row mt-4">
                         <div className="form-group text-left  pl-0 pr-0  col-12">
-                            {/* <div className={this.state.statusBotao + " alert alert-danger pt-1"} role="alert">
-                                {this.state.errorMessage}
-                            </div> */}
-                                <Input name="nome"  guardaDados={guardaDados} placeholder="nome" />
+                            <Input name="nome" guardaDados={guardaDados} placeholder="nome" />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row mb-5">
                         <div className="form-group text-left pl-0 pr-0 col-12">
                             <Input name="cnpj" type="number" guardaDados={guardaDados} placeholder="cnpj" />
                         </div>
