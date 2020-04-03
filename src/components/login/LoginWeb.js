@@ -7,6 +7,8 @@ import StepsLogInSignUp from '../cadastro/StepsLogInSignUp'
 import HolderMessage from './HolderMessage'
 import ContagemProgress from './contagemProgress'
 import doCadastro from '../../services/cadastroService'
+import {cnpjMask,cepMask} from '../../validations/masks'
+
 
 class Login extends Component{
 
@@ -50,22 +52,38 @@ class Login extends Component{
 
     guardaDadosCadastro = (event,endereco)=>{
         const {name,value} = event.target
-        
-        if(name == 'confirm-senha') {
-            if(this.state.dadosRegistro.senha == value)
+        console.log(name)
+        if(name == 'cnpj'){
+           var retorno = cnpjMask(value)
+           this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:retorno}})
+        }else if(name == 'confirm-senha'){
+            if(this.state.dadosRegistro.senha == value){
                 var x = 2
-        } else {
+            }
+        }
+        else{
             this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
-            console.log(this.state.dadosRegistro)
         }
         
     }
 
-    guardaEndereco = (event) =>{
+    buscaCep = async () =>{
+        var retorno = await fetch(`https://viacep.com.br/ws/${this.state.dadosRegistro.endereco.cep}/json/`)
+        var cep = await retorno.json()
+        this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco, logradouro : cep.logradouro}}})
+    }
+
+    guardaEndereco = async (event) =>{
        
         const {name, value} = event.target
-        this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco: {...this.state.dadosRegistro.endereco,[name]:value}}})
-        console.log(this.state.dadosRegistro)
+        if(name == 'cep'){
+            var retorno = cepMask(value)
+            this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco: {...this.state.dadosRegistro.endereco,[name]:retorno}}})
+        }else{
+            this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco: {...this.state.dadosRegistro.endereco,[name]:value}}})
+            console.log(this.state.dadosRegistro)
+        }
+
     }
 
     cadastrarEscola = async () => {
@@ -97,9 +115,6 @@ class Login extends Component{
 
     }
 
-    aumentaIndicador = (step) =>{
-        
-    }
 
     aumentaProgress = async (numero) =>{
         this.setState({progressCount:25*numero})
@@ -133,7 +148,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp  value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

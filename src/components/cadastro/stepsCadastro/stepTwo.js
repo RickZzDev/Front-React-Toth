@@ -3,7 +3,7 @@ import Botao from '../../botao'
 import Input from '../../inputs'
 
    
-    function StepTwo({mudaStatus,guardaDados,mostraJson}){
+    function StepTwo({mudaStatus,guardaDados,mostraJson,value,buscaCep}){
         return (
             <div>
                 <form name="frmformulario" onSubmit={event => {
@@ -13,12 +13,12 @@ import Input from '../../inputs'
                     <div className="container  p-2 pr-4 pl-4 pt-1 pb-5  animAparecer">
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="cep" type="number" name="cep" guardaDados={guardaDados} endereco={true} />
+                                <Input placeholder="cep" buscaCep={buscaCep} value={value.cep} type="text" name="cep" guardaDados={guardaDados} endereco={true} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="logradouro" name="logradouro" guardaDados={guardaDados} />
+                                <Input placeholder="logradouro" value={value.logradouro}  name="logradouro" guardaDados={guardaDados} />
                             </div>
                             <div className="col-2 pl-0">
                                 <Input placeholder="numero" type="number" name="numero" guardaDados={guardaDados} />
