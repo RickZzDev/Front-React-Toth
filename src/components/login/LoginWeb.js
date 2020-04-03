@@ -6,6 +6,7 @@ import MessageStepOne from '../login/messageStepOne'
 import StepsLogInSignUp from '../cadastro/StepsLogInSignUp'
 import HolderMessage from './HolderMessage'
 import ContagemProgress from './contagemProgress'
+import doCadastro from '../../services/cadastroService'
 
 class Login extends Component{
 
@@ -49,8 +50,15 @@ class Login extends Component{
 
     guardaDadosCadastro = (event,endereco)=>{
         const {name,value} = event.target
-        this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
-        console.log(this.state.dadosRegistro)
+        
+        if(name == 'confirm-senha') {
+            if(this.state.dadosRegistro.senha == value)
+                var x = 2
+        } else {
+            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
+            console.log(this.state.dadosRegistro)
+        }
+        
     }
 
     guardaEndereco = (event) =>{
@@ -60,8 +68,12 @@ class Login extends Component{
         console.log(this.state.dadosRegistro)
     }
 
-   mostraJson = () =>{
-        console.log(this.state.dadosRegistro)
+    cadastrarEscola = async () => {
+        
+        const resposta = await doCadastro(this.state.dadosRegistro)
+        const usuario = await resposta.json()
+
+        console.log(usuario)
     }
 
     mudaStatus = (params,numero) => {
@@ -121,7 +133,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

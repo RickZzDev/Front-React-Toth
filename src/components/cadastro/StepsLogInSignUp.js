@@ -13,6 +13,7 @@ function StepsLogInSignUp(props){
     const guardaDadosCadastro = props.guardaDados
     const mostraJson = props.mostraJson
     const guardaEndereco = props.guardaEndereco
+    const cadastrarEscola = props.cadastrarEscola
 
     if(status == 'LogIn'){
         return <LogIn />
@@ -40,7 +41,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepThree status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepThree cadastrarEscola={cadastrarEscola} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }

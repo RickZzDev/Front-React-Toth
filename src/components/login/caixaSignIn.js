@@ -3,7 +3,7 @@ import Botao from '../botao'
 import Input from '../inputs'
 import './LoginWeb.css'
 import ImagemToth from '../imagemToth'
-import { doLogin } from '../../services/loginService'
+import doLogin from '../../services/loginService'
 
 
 class LoginSignIn extends Component{

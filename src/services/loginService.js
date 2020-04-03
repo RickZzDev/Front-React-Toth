@@ -2,6 +2,8 @@ import { doRequest, doPublicRequest } from './basicRequest'
 
 const RESOURCE = "/escolas/autenticacao"
 
-export const doLogin = user => {
+const doLogin = user => {
     return doPublicRequest(RESOURCE, 'POST', user);
 }
+
+export default doLogin

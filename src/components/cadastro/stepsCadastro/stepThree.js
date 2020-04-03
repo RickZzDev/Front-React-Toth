@@ -3,11 +3,11 @@ import Inputs from '../../inputs'
 import '../../login/LoginWeb.css'
 import Botao from '../../botao'
 
-    function StepThree({mudaStatus, guardaDados,mostraJson}){
+    function StepThree({mudaStatus, guardaDados,mostraJson, cadastrarEscola}){
         return(
             <form name="frmformulario" onSubmit={event => {
                 event.preventDefault()
-                mudaStatus('four')
+                cadastrarEscola();
                 }}>
                 <div className="container animAparecer">
                     <div className="row">
