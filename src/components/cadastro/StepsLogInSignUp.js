@@ -16,6 +16,7 @@ function StepsLogInSignUp(props){
     const cadastrarEscola = props.cadastrarEscola
     const value = props.value
     const buscaCep = props.buscaCep
+    const confereCnpj = props.confereCnpj
     
 
     if(status == 'LogIn'){
@@ -26,7 +27,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-1">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepOne value={value.cnpj} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepOne confereCnpj={confereCnpj} value={value.cnpj} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }if(status == 'three'){

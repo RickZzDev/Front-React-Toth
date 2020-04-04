@@ -70,7 +70,15 @@ class Login extends Component{
     buscaCep = async () =>{
         var retorno = await fetch(`https://viacep.com.br/ws/${this.state.dadosRegistro.endereco.cep}/json/`)
         var cep = await retorno.json()
-        this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco, logradouro : cep.logradouro}}})
+        console.log(cep)
+        this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco,
+             logradouro : cep.logradouro,
+             bairro : cep.bairro,
+             cidade: cep.localidade,
+             estado:cep.uf}}})
+
+
+
     }
 
     guardaEndereco = async (event) =>{
@@ -87,11 +95,8 @@ class Login extends Component{
     }
 
     cadastrarEscola = async () => {
-        
         const resposta = await doCadastro(this.state.dadosRegistro)
         const usuario = await resposta.json()
-
-        console.log(usuario)
     }
 
     mudaStatus = (params,numero) => {
@@ -120,9 +125,23 @@ class Login extends Component{
         this.setState({progressCount:25*numero})
     }
 
-    animationRegistroConcluido = () => {
-        
+    confereCnpj = async (cnpj) =>{
+        const params = {
+            method:'post',
+            headers:{
+            Accpept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body:{
+               cnpj: this.state.dadosRegistro.cnpj}
+        }
+        console.log(params)
+        console.log(JSON.stringify(this.state.dadosRegistro.cnpj))
+        var retorno = await fetch(`http://localhost:8080/escolas/cnpj` , params)
+        var cep = await retorno.json()
+        console.log(cep)
     }
+
 
     render(){
          return(
@@ -148,7 +167,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp  value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

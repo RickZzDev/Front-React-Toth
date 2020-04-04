@@ -21,20 +21,20 @@ import Input from '../../inputs'
                                 <Input placeholder="logradouro" value={value.logradouro}  name="logradouro" guardaDados={guardaDados} />
                             </div>
                             <div className="col-2 pl-0">
-                                <Input placeholder="numero" type="number" name="numero" guardaDados={guardaDados} />
+                                <Input placeholder="numero" value={value.numero}  type="number" name="numero" guardaDados={guardaDados} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="bairro" name="bairro" guardaDados={guardaDados} />
+                                <Input placeholder="bairro" value={value.bairro}  name="bairro" guardaDados={guardaDados} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-10 pl-0">
-                                <Input placeholder="cidade" name="cidade" guardaDados={guardaDados} />
+                                <Input placeholder="cidade" value={value.cidade}  name="cidade" guardaDados={guardaDados} />
                             </div>
                             <div className="col-2  pl-0">
-                                <Input placeholder="estado" maxLength={2} name="estado" guardaDados={guardaDados} />
+                                <Input placeholder="estado" value={value.estado}  maxLength={2} name="estado" guardaDados={guardaDados} />
                             </div>
                         </div>
                     </div>
