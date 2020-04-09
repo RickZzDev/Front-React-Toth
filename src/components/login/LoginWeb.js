@@ -8,7 +8,7 @@ import HolderMessage from './HolderMessage'
 import ContagemProgress from './contagemProgress'
 import doCadastro from '../../services/cadastroService'
 import {cnpjMask,cepMask} from '../../validations/masks'
-
+import {verificaCnpj} from '../../services/loginService'
 
 class Login extends Component{
 
@@ -16,6 +16,7 @@ class Login extends Component{
         super()
         this.componenteLogin = React.createRef();
         this.state = {
+            valid:'',
             status:'LogIn',
             visibility:'invisible',
             progressCount:1,
@@ -70,15 +71,25 @@ class Login extends Component{
     buscaCep = async () =>{
         var retorno = await fetch(`https://viacep.com.br/ws/${this.state.dadosRegistro.endereco.cep}/json/`)
         var cep = await retorno.json()
-        console.log(cep)
-        this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco,
-             logradouro : cep.logradouro,
-             bairro : cep.bairro,
-             cidade: cep.localidade,
-             estado:cep.uf}}})
+        if(cep.erro){
+            this.setState({valid:'input-toth-invalid'})
+            console.log('invalido')
+        }else{
+            this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco,
+                logradouro : cep.logradouro,
+                bairro : cep.bairro,
+                cidade: cep.localidade,
+                estado:cep.uf}}})
+            this.setState({valid:'input-toth'})    
+        }
+       
 
 
 
+    }
+
+    mostraJson = () =>{
+        // console.log(this.state.dadosRegistro)
     }
 
     guardaEndereco = async (event) =>{
@@ -125,21 +136,16 @@ class Login extends Component{
         this.setState({progressCount:25*numero})
     }
 
-    confereCnpj = async (cnpj) =>{
-        const params = {
-            method:'post',
-            headers:{
-            Accpept: 'application/json',
-            'Content-Type': 'application/json',
-            },
-            body:{
-               cnpj: this.state.dadosRegistro.cnpj}
+    confereCnpj = async () =>{
+        var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
+        if(retorno.status == 400){
+            this.setState({valid:'input-toth-invalid'})
+            var message = await retorno.json()
+            console.log(message)
+        }else{
+            this.setState({valid:'input-toth'})
+            // this.mudaStatus('three', 1.4)
         }
-        console.log(params)
-        console.log(JSON.stringify(this.state.dadosRegistro.cnpj))
-        var retorno = await fetch(`http://localhost:8080/escolas/cnpj` , params)
-        var cep = await retorno.json()
-        console.log(cep)
     }
 
 
@@ -167,7 +173,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

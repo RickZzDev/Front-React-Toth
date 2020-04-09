@@ -24,6 +24,7 @@
     font-size: 16px;
     font-family: sans-serif;
     height: 60px;
+    transition: 0.5s;
 }
 
 .placeholder-nome::after, .placeholder-login::after, .placeholder-senha::after, 
@@ -112,6 +113,14 @@
 .input-toth:focus, .input-toth:valid {
     border-bottom: 2px solid #4481e3;
 }
+
+
+
+.input-toth-invalid{
+    border-bottom: 2px solid red !important;
+    transition: 0.5s;
+}
+
 
 
 .margin-toth {
