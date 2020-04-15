@@ -27,6 +27,8 @@ class Login extends Component{
             step2:'bg-light',
             step3:'bg-light',
             step4:'bg-light',
+            erroEmail:'invisible d-none',
+            erroSenha:'invisible d-none',
             dadosRegistro:{
                 "nome":'',
                 "cnpj":'',
@@ -50,16 +52,36 @@ class Login extends Component{
         element.fadeOut()
     }
     
+    confereLogin = async () =>{
+        alert('a')
+    }
 
     guardaDadosCadastro = (event,endereco)=>{
         const {name,value} = event.target
-        console.log(name)
         if(name == 'cnpj'){
            var retorno = cnpjMask(value)
            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:retorno}})
         }else if(name == 'confirm-senha'){
             if(this.state.dadosRegistro.senha == value){
-                var x = 2
+                this.setState({valid:'input-toth'})    
+            }else{
+                this.setState({valid:'input-toth-invalid'})
+            }
+        }
+        else if(name == 'email'){
+            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
+            if(this.state.dadosRegistro.email.length >= 15 &&  this.state.dadosRegistro.email.length <=225){
+                this.setState({erroEmail:'invisible d-none'})  
+            }else{
+                this.setState({erroEmail:'visible'})
+            }
+        }
+        else if(name == 'senha'){
+            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
+            if(this.state.dadosRegistro.senha.length >= 5 &&  this.state.dadosRegistro.email.length <=225){
+                this.setState({erroSenha:'invisible d-none'})  
+            }else{
+                this.setState({erroSenha:'visible'})
             }
         }
         else{
@@ -82,14 +104,10 @@ class Login extends Component{
                 estado:cep.uf}}})
             this.setState({valid:'input-toth'})    
         }
-       
-
-
-
     }
 
     mostraJson = () =>{
-        // console.log(this.state.dadosRegistro)
+        console.log(this.state.dadosRegistro)
     }
 
     guardaEndereco = async (event) =>{
@@ -136,6 +154,7 @@ class Login extends Component{
         this.setState({progressCount:25*numero})
     }
 
+
     confereCnpj = async () =>{
         var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
         if(retorno.status == 400){
@@ -173,7 +192,7 @@ class Login extends Component{
                                 </div>
                             </div>
                             <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp confereLogin={this.confereLogin} erroSenha={this.state.erroSenha} erroEmail={this.state.erroEmail} valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>                  
                         </div>
                     </div>

@@ -7,18 +7,10 @@ import LogIn from '../login/caixaSignIn'
 
 
 
-function StepsLogInSignUp(props){
-    const status = props.status
-    const mudaStatus = props.mudaStatus
-    const guardaDadosCadastro = props.guardaDados
-    const mostraJson = props.mostraJson
-    const guardaEndereco = props.guardaEndereco
-    const cadastrarEscola = props.cadastrarEscola
-    const value = props.value
-    const buscaCep = props.buscaCep
-    const confereCnpj = props.confereCnpj
-    const valid = props.valid
-    
+function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,buscaCep,status,mudaStatus,guardaDados,mostraJson,guardaEndereco,cadastrarEscola,value}){
+ 
+    const guardaDadosCadastro = guardaDados
+
 
     if(status == 'LogIn'){
         return <LogIn />
@@ -46,7 +38,7 @@ function StepsLogInSignUp(props){
                     <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepThree cadastrarEscola={cadastrarEscola} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepThree confereLogin={confereLogin} erroSenha={erroSenha} erroEmail={erroEmail} valid={valid} cadastrarEscola={cadastrarEscola} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }
