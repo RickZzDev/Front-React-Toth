@@ -4,7 +4,7 @@ import '../../login/LoginWeb.css'
 import Botao from '../../botao'
 import ErrorMessage from '../../errorMessage'
 
-    function StepThree({confereLogin,erroSenha,erroEmail,mudaStatus, guardaDados,mostraJson, cadastrarEscola,valid}){
+    function StepThree({confereLogin,erroSenha,erroEmail,mudaStatus, guardaDados,mostraJson, cadastrarEscola,valid, iniciarAnimacaoLogin}){
         if(valid == 'input-toth-invalid'){
             visibility = 'visible'
         }else{
@@ -14,7 +14,10 @@ import ErrorMessage from '../../errorMessage'
             <form name="frmformulario" onSubmit={event => {
                 event.preventDefault()
                 if(valid == 'input-toth'){
-                    cadastrarEscola();
+                    const tentativaCadastro = cadastrarEscola();
+                    
+                    if(tentativaCadastro)
+                        iniciarAnimacaoLogin()
                 }
                 }}>
                 <div className="container animAparecer">

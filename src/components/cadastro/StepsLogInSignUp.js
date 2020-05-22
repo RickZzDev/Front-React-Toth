@@ -7,7 +7,7 @@ import LogIn from '../login/caixaSignIn'
 
 
 
-function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,buscaCep,status,mudaStatus,guardaDados,mostraJson,guardaEndereco,cadastrarEscola,value}){
+function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,buscaCep,status,mudaStatus,guardaDados,mostraJson,guardaEndereco,cadastrarEscola,value, iniciarAnimacaoLogin}){
  
     const guardaDadosCadastro = guardaDados
 
@@ -38,7 +38,7 @@ function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,bu
                     <div className="row mt-2 mb-4">
                         <h3 className="text-primary">Sign Up</h3>
                     </div>
-                    <StepThree confereLogin={confereLogin} erroSenha={erroSenha} erroEmail={erroEmail} valid={valid} cadastrarEscola={cadastrarEscola} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
+                    <StepThree iniciarAnimacaoLogin={iniciarAnimacaoLogin} confereLogin={confereLogin} erroSenha={erroSenha} erroEmail={erroEmail} valid={valid} cadastrarEscola={cadastrarEscola} status={status} mostraJson={mostraJson} mudaStatus={mudaStatus} guardaDados={guardaDadosCadastro} />
                 </div>
         )
     }

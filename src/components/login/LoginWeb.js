@@ -9,6 +9,8 @@ import ContagemProgress from './contagemProgress'
 import doCadastro from '../../services/cadastroService'
 import {cnpjMask,cepMask} from '../../validations/masks'
 import {verificaCnpj} from '../../services/loginService'
+import tothLoading from './images/TOTH.png'
+import okayLoading from './images/okay.png'
 
 class Login extends Component{
 
@@ -29,6 +31,20 @@ class Login extends Component{
             step4:'bg-light',
             erroEmail:'invisible d-none',
             erroSenha:'invisible d-none',
+            boxSize: ' col-lg-7 ',
+            fix: '',
+            zindex: '',
+            invisibleItems: '',
+            display: '',
+            showLoading: '',
+            aumentar: '',
+            circleProgress: '',
+            rotateFront: '',
+            rotateConfirm: '',
+            circleAnimation: '',
+            displayFlex: '',
+            frontAnimation: '',
+            backAnimation: '',
             dadosRegistro:{
                 "nome":'',
                 "cnpj":'',
@@ -53,7 +69,7 @@ class Login extends Component{
     }
     
     confereLogin = async () =>{
-        alert('a')
+        // alert('a')
     }
 
     guardaDadosCadastro = (event,endereco)=>{
@@ -91,6 +107,7 @@ class Login extends Component{
     }
 
     buscaCep = async () =>{
+
         var retorno = await fetch(`https://viacep.com.br/ws/${this.state.dadosRegistro.endereco.cep}/json/`)
         var cep = await retorno.json()
         if(cep.erro){
@@ -125,7 +142,10 @@ class Login extends Component{
 
     cadastrarEscola = async () => {
         const resposta = await doCadastro(this.state.dadosRegistro)
-        const usuario = await resposta.json()
+        if(resposta.status === 201)
+            return true
+        else
+            return false
     }
 
     mudaStatus = (params,numero) => {
@@ -167,6 +187,19 @@ class Login extends Component{
         }
     }
 
+    iniciarAnimacaoLogin = () => {
+        this.setState({progressCount: 100, step4: 'bg-warning'})
+        setTimeout(this.boxAnimation, 1050)
+    }
+
+    boxAnimation = () => {
+        this.setState({boxSize: ' col-lg-12 ', fix: ' fix ', zindex: ' z-index ', invisibleItems: ' invisible-items '})
+        setTimeout(() => {this.setState({display: ' display ', showLoading: ' display-block '})}, 1300)
+        setTimeout(() => {this.setState({aumentar: ' progress-maior '})}, 1700)
+        setTimeout(() => {this.setState({circleAnimation: ' circle-animation '})}, 2100)
+        setTimeout(() => {this.setState({displayFlex: ' display-flex '})}, 2200)
+        setTimeout(() => {this.setState({frontAnimation: ' front-animation ', backAnimation: ' back-animation '})}, 2351)
+    }
 
     render(){
          return(
@@ -174,8 +207,8 @@ class Login extends Component{
                 <div className="opacidade height-100 pt-5">
                     <div className="container bg-light div_login rounded animAparecer ">
                         <div className="row divComponentLogin">
-                            <div className="col-lg-7 testeColor" >
-                                <div className="row">
+                            <div className={this.state.boxSize + this.state.zindex + "testeColor transition-5"} >
+                                <div className={"row" + this.state.invisibleItems + this.state.display}>
                                     <div className="col-3">
                                         <ImagemToth/>
                                     </div>
@@ -183,17 +216,36 @@ class Login extends Component{
                                         <strong>Toth Plataform</strong>
                                     </div>
                                 </div>
-                                <HolderMessage  aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
-                                <div className={ "container mt-5 "  + this.state.visibility}>
+                                <div className={this.state.invisibleItems + this.state.display}>
+                                    <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                </div>
+                                <div className={ "container mt-5 "  + this.state.visibility + this.state.invisibleItems + this.state.display}>
                                     <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3} step4={this.state.step4}/>
                                 </div>
-                                <div className={'progress mt-3 ' + this.state.visibility}>
+                                <div className={'progress mt-3 ' + this.state.visibility + this.state.invisibleItems + this.state.display}>
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
                                 </div>
                             </div>
-                            <div className="col-lg-5 bg-light p-5" >
-                                <StepsLogInSignUp confereLogin={this.confereLogin} erroSenha={this.state.erroSenha} erroEmail={this.state.erroEmail} valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
-                            </div>                  
+                            <div className={this.state.fix + "col-lg-5 bg-light p-5"} >
+                                <StepsLogInSignUp iniciarAnimacaoLogin={this.iniciarAnimacaoLogin} confereLogin={this.confereLogin} erroSenha={this.state.erroSenha} erroEmail={this.state.erroEmail} valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                            </div>    
+                            <div className={"container-loading" + this.state.showLoading + this.state.aumentar}>
+                                <div className="card-loading">
+                                    <svg className={"progress-bar-loading" + this.state.displayFlex}>
+                                        <circle cy="70" cx="70" r="65" className={"progress-bar-loading-circle" + this.state.circleAnimation}>
+
+                                        </circle>
+                                    </svg>
+                                    <div className="radius-toth">
+                                        <div class={"front-circle" + this.state.frontAnimation}>
+                                            <img class="toth-progressImage" src={tothLoading}/>
+                                        </div>
+                                        <div class={"back-circle"  + this.state.backAnimation}>
+                                            <img class="toth-confirmImage" src={okayLoading}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>              
                         </div>
                     </div>
                 </div>
