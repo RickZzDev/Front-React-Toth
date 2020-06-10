@@ -220,7 +220,7 @@ input:focus{
     height: 95%;
     border-radius: 50%;
     display: flex;
-    transform: translate(0.5px, -2px);
+    transform: translate(0.5px, 1.6px);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -272,4 +272,36 @@ input:focus{
 
 .display-flex {
     display: flex;
+}
+
+.retirarSteps {
+    display: none;
+    opacity: 0;
+}
+
+.move-loading {
+    left: -350px !important;
+    transition: 0.9s;
+    opacity: 0;
+}
+
+.display-visible {
+    display: block !important;
+    transition: 4s;
+}
+
+.display-visible-flex {
+    display: flex !important;
+    transition: 4s;
+}
+
+.visible-itens {
+    transition: 1.2 !important;
+    opacity: 100% !important;
+}
+
+.repor-steps {
+    opacity: 100% !important;
+    display: block !important;
+    transition: 2s !important;
 }

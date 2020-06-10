@@ -22,7 +22,7 @@ import ErrorMessage from '../../errorMessage'
                 }}>
                 <div className="container animAparecer">
                     <div className="row">
-                        <Inputs name="email" type="email" placeholder="email" type="text" guardaDados={guardaDados} />
+                        <Inputs name="email" type="email" placeholder="email" type="email" guardaDados={guardaDados} />
                     </div>
                      <div className={erroEmail + ' text-danger'}>
                         Email invalido
@@ -39,7 +39,7 @@ import ErrorMessage from '../../errorMessage'
                     <div className="row">
                         <Inputs name="confirm-senha" placeholder="confirm-senha" type="password" guardaDados={guardaDados}  />
                     </div>
-                    <div className={visibility + ' text-warning'}>
+                    <div className={visibility + ' text-danger'}>
                         Senhas não coincidem
                     </div>
                 </div>

@@ -10,7 +10,7 @@ import doCadastro from '../../services/cadastroService'
 import {cnpjMask,cepMask} from '../../validations/masks'
 import {verificaCnpj} from '../../services/loginService'
 import tothLoading from './images/TOTH.png'
-import okayLoading from './images/okay.png'
+import okayLoading from './images/okay.png';
 
 class Login extends Component{
 
@@ -45,9 +45,15 @@ class Login extends Component{
             displayFlex: '',
             frontAnimation: '',
             backAnimation: '',
+            stepsFadeOut: '',
+            moveLoading: '',
+            displayVisible: '',
+            displayVisibleFlex: '',
+            visibleItens: '',
+            reporSteps: '',
             dadosRegistro:{
                 "nome":'',
-                "cnpj":'',
+                "cnpj": '',
                 'email':'',
                 'login':'',
                 'senha':'',
@@ -86,7 +92,10 @@ class Login extends Component{
         }
         else if(name == 'email'){
             this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
-            if(this.state.dadosRegistro.email.length >= 15 &&  this.state.dadosRegistro.email.length <=225){
+
+            const emailInserido = this.state.dadosRegistro.email.split('@')[0]
+
+            if(emailInserido.length >= 1 &&  this.state.dadosRegistro.email.length <=225){
                 this.setState({erroEmail:'invisible d-none'})  
             }else{
                 this.setState({erroEmail:'visible'})
@@ -176,14 +185,15 @@ class Login extends Component{
 
 
     confereCnpj = async () =>{
-        var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
-        if(retorno.status == 400){
-            this.setState({valid:'input-toth-invalid'})
-            var message = await retorno.json()
-            console.log(message)
-        }else{
-            this.setState({valid:'input-toth'})
-            // this.mudaStatus('three', 1.4)
+        if(this.state.dadosRegistro.cnpj != ''){
+            var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
+            if(retorno.status == 400){
+                this.setState({valid:'input-toth-invalid'})
+                var message = await retorno.json()
+                console.log(message)
+            }else{
+                this.setState({valid:'input-toth'})
+            }
         }
     }
 
@@ -194,11 +204,15 @@ class Login extends Component{
 
     boxAnimation = () => {
         this.setState({boxSize: ' col-lg-12 ', fix: ' fix ', zindex: ' z-index ', invisibleItems: ' invisible-items '})
+        setTimeout(() => {this.setState({stepsFadeOut : ' retirarSteps' })}, 1200)
+
         setTimeout(() => {this.setState({display: ' display ', showLoading: ' display-block '})}, 1300)
         setTimeout(() => {this.setState({aumentar: ' progress-maior '})}, 1700)
         setTimeout(() => {this.setState({circleAnimation: ' circle-animation '})}, 2100)
         setTimeout(() => {this.setState({displayFlex: ' display-flex '})}, 2200)
         setTimeout(() => {this.setState({frontAnimation: ' front-animation ', backAnimation: ' back-animation '})}, 2351)
+        setTimeout(() => {this.setState({boxSize: ' col-lg-7 ', visibleItens: ' visible-itens ', moveLoading: ' move-loading ', status: 'LogIn', stepsFadeOut: ' '})}, 5000)
+        setTimeout(() => {this.setState({displayVisible: ' display-visible ', displayVisibleFlex: ' display-visible-flex ', reporSteps: ' repor-steps '})}, 5300)
     }
 
     render(){
@@ -208,7 +222,7 @@ class Login extends Component{
                     <div className="container bg-light div_login rounded animAparecer ">
                         <div className="row divComponentLogin">
                             <div className={this.state.boxSize + this.state.zindex + "testeColor transition-5"} >
-                                <div className={"row" + this.state.invisibleItems + this.state.display}>
+                                <div className={"row" + this.state.invisibleItems + this.state.display + this.state.displayVisibleFlex + this.state.visibleItens}>
                                     <div className="col-3">
                                         <ImagemToth/>
                                     </div>
@@ -216,7 +230,7 @@ class Login extends Component{
                                         <strong>Toth Plataform</strong>
                                     </div>
                                 </div>
-                                <div className={this.state.invisibleItems + this.state.display}>
+                                <div className={this.state.invisibleItems + this.state.display + this.state.displayVisible + this.state.visibleItens}>
                                     <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
                                 </div>
                                 <div className={ "container mt-5 "  + this.state.visibility + this.state.invisibleItems + this.state.display}>
@@ -226,10 +240,10 @@ class Login extends Component{
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
                                 </div>
                             </div>
-                            <div className={this.state.fix + "col-lg-5 bg-light p-5"} >
+                            <div className={this.state.fix + "col-lg-5 bg-light p-5 " + this.state.stepsFadeOut + this.state.reporSteps} >
                                 <StepsLogInSignUp iniciarAnimacaoLogin={this.iniciarAnimacaoLogin} confereLogin={this.confereLogin} erroSenha={this.state.erroSenha} erroEmail={this.state.erroEmail} valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
                             </div>    
-                            <div className={"container-loading" + this.state.showLoading + this.state.aumentar}>
+                            <div className={"container-loading" + this.state.showLoading + this.state.aumentar + this.state.moveLoading}>
                                 <div className="card-loading">
                                     <svg className={"progress-bar-loading" + this.state.displayFlex}>
                                         <circle cy="70" cx="70" r="65" className={"progress-bar-loading-circle" + this.state.circleAnimation}>
@@ -237,11 +251,11 @@ class Login extends Component{
                                         </circle>
                                     </svg>
                                     <div className="radius-toth">
-                                        <div class={"front-circle" + this.state.frontAnimation}>
-                                            <img class="toth-progressImage" src={tothLoading}/>
+                                        <div className={"front-circle" + this.state.frontAnimation}>
+                                            <img className="toth-progressImage" src={tothLoading}/>
                                         </div>
-                                        <div class={"back-circle"  + this.state.backAnimation}>
-                                            <img class="toth-confirmImage" src={okayLoading}/>
+                                        <div className={"back-circle"  + this.state.backAnimation}>
+                                            <img className="toth-confirmImage" src={okayLoading}/>
                                         </div>
                                     </div>
                                 </div>
