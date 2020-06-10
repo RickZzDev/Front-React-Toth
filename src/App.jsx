@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import Routes from './routes/routes'
+import Routes from './routes'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 

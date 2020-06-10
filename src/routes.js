@@ -1,12 +1,11 @@
 import React,{Component} from 'react'
 import {BrowserRouter as Router, Switch,Route,Redirect} from 'react-router-dom'
-import Botao from '../components/botao'
-import Login from '../components/login/LoginWeb'
-import StepsLogInSignUp from '../components/cadastro/StepsLogInSignUp'
-import StepOne from '../components/cadastro/stepsCadastro/stepOne'
-import StepTwo from '../components/cadastro/stepsCadastro/stepTwo'
-import StepThree from '../components/cadastro/stepsCadastro/stepThree'
-import StepFour from '../components/cadastro/stepsCadastro/stepFour'
+import Login from './components/login/LoginWeb'
+import StepsLogInSignUp from './components/cadastro/StepsLogInSignUp'
+import StepOne from './components/cadastro/stepsCadastro/stepOne'
+import StepTwo from './components/cadastro/stepsCadastro/stepTwo'
+import StepThree from './components/cadastro/stepsCadastro/stepThree'
+import StepFour from './components/cadastro/stepsCadastro/stepFour'
 
 const NotFound = () =>{
     return(
