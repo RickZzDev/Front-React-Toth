@@ -104,12 +104,14 @@ class Login extends Component{
        
         }
         else if(name == 'senha'){
-            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
-            if(this.state.dadosRegistro.senha.length >= 5 &&  this.state.dadosRegistro.email.length <=225){
-                this.setState({erroSenha:'invisible d-none'})  
-            }else{
-                this.setState({erroSenha:'visible'})
-            }
+            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}}, ()=>{
+                if(this.state.dadosRegistro.senha.length >= 5 &&  this.state.dadosRegistro.email.length <=225){
+                    this.setState({erroSenha:'invisible d-none'})  
+                }else{
+                    this.setState({erroSenha:'visible'})
+                }
+            })
+         
         }
         else{
             this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
