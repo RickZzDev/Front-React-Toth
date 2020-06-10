@@ -19,11 +19,6 @@ const Routes  = () =>(
     <Router>
         <Switch>
             <Route path='/login' component={Login} />
-            <Route path='/StepsLogInSignUp' component={StepsLogInSignUp} />
-            <Route path='/step1' component={StepOne} />
-            <Route path='/step2' component={StepTwo} />
-            <Route path='/step3' component={StepThree} />
-            <Route path='/step4' component={StepFour} />
         </Switch>
     </Router>
     
