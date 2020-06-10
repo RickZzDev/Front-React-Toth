@@ -91,15 +91,17 @@ class Login extends Component{
             }
         }
         else if(name == 'email'){
-            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
+            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}}, ()=>{
+                const emailInserido = this.state.dadosRegistro.email.split('@')[0]
 
-            const emailInserido = this.state.dadosRegistro.email.split('@')[0]
+                if(emailInserido.length >= 1 &&  this.state.dadosRegistro.email.length <=225){
+                    this.setState({erroEmail:'invisible d-none'})  
+                }else{
+                    this.setState({erroEmail:'visible'})
+                }
+            })
 
-            if(emailInserido.length >= 1 &&  this.state.dadosRegistro.email.length <=225){
-                this.setState({erroEmail:'invisible d-none'})  
-            }else{
-                this.setState({erroEmail:'visible'})
-            }
+       
         }
         else if(name == 'senha'){
             this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
