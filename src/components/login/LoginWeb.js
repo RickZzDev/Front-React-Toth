@@ -17,6 +17,7 @@ class Login extends Component{
     constructor(){
         super()
         this.componenteLogin = React.createRef();
+
         this.state = {
             valid:'',
             status:'LogIn',
@@ -67,6 +68,8 @@ class Login extends Component{
                 }
             }
         }
+
+        this.stateInicial = this.state
     }
 
     animacao = async () =>{
@@ -206,6 +209,10 @@ class Login extends Component{
         setTimeout(this.boxAnimation, 1050)
     }
 
+    resetarCadastroAoEstadoInicial = () => {
+        this.setState(this.stateInicial)
+    }
+
     boxAnimation = () => {
         this.setState({boxSize: ' col-lg-12 ', fix: ' fix ', zindex: ' z-index ', invisibleItems: ' invisible-items '})
         setTimeout(() => {this.setState({stepsFadeOut : ' retirarSteps' })}, 1200)
@@ -217,6 +224,8 @@ class Login extends Component{
         setTimeout(() => {this.setState({frontAnimation: ' front-animation ', backAnimation: ' back-animation '})}, 2351)
         setTimeout(() => {this.setState({boxSize: ' col-lg-7 ', visibleItens: ' visible-itens ', moveLoading: ' move-loading ', status: 'LogIn', stepsFadeOut: ' '})}, 5000)
         setTimeout(() => {this.setState({displayVisible: ' display-visible ', displayVisibleFlex: ' display-visible-flex ', reporSteps: ' repor-steps '})}, 5300)
+
+        setTimeout(() => this.resetarCadastroAoEstadoInicial(), 6500)
     }
 
     render(){
