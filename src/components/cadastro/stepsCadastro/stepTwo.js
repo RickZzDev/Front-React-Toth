@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
-import Botao from '../../botao'
-import Input from '../../inputs'
-import ErrorMessage from '../../errorMessage'
+import Botao from '../../componentesUtilitarios/botao'
+import Input from '../../componentesUtilitarios/inputs'
+import ErrorMessage from '../../componentesUtilitarios/errorMessage'
    
     function StepTwo({mudaStatus,guardaDados,mostraJson,value,buscaCep,valid}){
         if(valid == 'input-toth-invalid'){

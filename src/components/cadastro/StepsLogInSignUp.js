@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import Botao from '../botao'
+import Botao from '../componentesUtilitarios/botao'
 import StepOne from './stepsCadastro/stepOne'
 import StepTwo from './stepsCadastro/stepTwo'
 import StepThree from './stepsCadastro/stepThree'

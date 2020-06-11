@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
-import Botao from '../botao'
-import Input from '../inputs'
+import Botao from '../componentesUtilitarios/botao'
+import Input from '../componentesUtilitarios/inputs'
 import './LoginWeb.css'
-import ImagemToth from '../imagemToth'
+import ImagemToth from '../componentesUtilitarios/imagemToth'
 import doLogin from '../../services/loginService'
 
 

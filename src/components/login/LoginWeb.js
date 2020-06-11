@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import './LoginWeb.css'
-import ImagemToth from '../imagemToth'
+import ImagemToth from '../componentesUtilitarios/imagemToth'
 import LoginSignIn from '../login/caixaSignIn'
 import MessageStepOne from '../login/messageStepOne'
 import StepsLogInSignUp from '../cadastro/StepsLogInSignUp'

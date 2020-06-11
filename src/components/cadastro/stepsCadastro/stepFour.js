@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Botao from '../../botao'
+import Botao from '../../componentesUtilitarios/botao'
 
 class StepFour extends Component{
 

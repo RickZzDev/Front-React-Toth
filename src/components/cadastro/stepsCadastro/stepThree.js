@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import Inputs from '../../inputs'
+import Inputs from '../../componentesUtilitarios/inputs'
 import '../../login/LoginWeb.css'
-import Botao from '../../botao'
-import ErrorMessage from '../../errorMessage'
+import Botao from '../../componentesUtilitarios/botao'
+import ErrorMessage from '../../componentesUtilitarios/errorMessage'
 
     function StepThree({confereLogin,erroSenha,erroEmail,mudaStatus, guardaDados,mostraJson, cadastrarEscola,valid, iniciarAnimacaoLogin}){
         if(valid == 'input-toth-invalid'){
