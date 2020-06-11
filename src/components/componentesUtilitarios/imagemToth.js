@@ -1,5 +1,5 @@
  import React, { Component } from 'react'
-import foto from '../assets/TOTH.png'
+import foto from '../../assets/TOTH.png'
 
 class ImagemToth extends Component {
 
