@@ -123,7 +123,7 @@ class Login extends Component{
     }
 
     buscaCep = async () =>{
-
+        
         var retorno = await fetch(`https://viacep.com.br/ws/${this.state.dadosRegistro.endereco.cep}/json/`)
         var cep = await retorno.json()
         if(cep.erro){
@@ -193,13 +193,17 @@ class Login extends Component{
 
     confereCnpj = async () =>{
         if(this.state.dadosRegistro.cnpj != ''){
-            var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
-            if(retorno.status == 400){
-                this.setState({valid:'input-toth-invalid'})
-                var message = await retorno.json()
-                console.log(message)
-            }else{
-                this.setState({valid:'input-toth'})
+            try {
+                var retorno = await verificaCnpj({cnpj:this.state.dadosRegistro.cnpj})
+                if(retorno.status == 400){
+                    this.setState({valid:'input-toth-invalid'})
+                    var message = await retorno.json()
+                    console.log(message)
+                }else{
+                    this.setState({valid:'input-toth'})
+                }
+            } catch(erro) {
+                console.log(erro)
             }
         }
     }
@@ -244,17 +248,36 @@ class Login extends Component{
                                     </div>
                                 </div>
                                 <div className={this.state.invisibleItems + this.state.display + this.state.displayVisible + this.state.visibleItens}>
-                                    <HolderMessage aumentaProgress={this.aumentaProgress} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                    <HolderMessage aumentaProgress={this.aumentaProgress} 
+                                                    mudaStatus={this.mudaStatus} 
+                                                    status={this.state.status}/>
                                 </div>
                                 <div className={ "container mt-5 "  + this.state.visibility + this.state.invisibleItems + this.state.display}>
-                                    <ContagemProgress step1={this.state.step1} step2={this.state.step2} step3={this.state.step3} step4={this.state.step4}/>
+                                    <ContagemProgress step1={this.state.step1} 
+                                                        step2={this.state.step2} 
+                                                        step3={this.state.step3} 
+                                                        step4={this.state.step4}/>
                                 </div>
                                 <div className={'progress mt-3 ' + this.state.visibility + this.state.invisibleItems + this.state.display}>
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.progressCount+ '%'}}></div>
                                 </div>
                             </div>
                             <div className={this.state.fix + "col-lg-5 bg-light p-5 " + this.state.stepsFadeOut + this.state.reporSteps} >
-                                <StepsLogInSignUp iniciarAnimacaoLogin={this.iniciarAnimacaoLogin} confereLogin={this.confereLogin} erroSenha={this.state.erroSenha} erroEmail={this.state.erroEmail} valid={this.state.valid} confereCnpj={this.confereCnpj} value={this.state.dadosRegistro} buscaCep={this.buscaCep} mostraJson={this.mostraJson} guardaEndereco={this.guardaEndereco} guardaDados={this.guardaDadosCadastro} cadastrarEscola={this.cadastrarEscola} mudaStatus={this.mudaStatus} status={this.state.status}/>
+                                <StepsLogInSignUp history={this.props.history} 
+                                                    iniciarAnimacaoLogin={this.iniciarAnimacaoLogin} 
+                                                    confereLogin={this.confereLogin} 
+                                                    erroSenha={this.state.erroSenha} 
+                                                    erroEmail={this.state.erroEmail} 
+                                                    valid={this.state.valid}
+                                                    confereCnpj={this.confereCnpj} 
+                                                    value={this.state.dadosRegistro} 
+                                                    buscaCep={this.buscaCep} 
+                                                    mostraJson={this.mostraJson} 
+                                                    guardaEndereco={this.guardaEndereco}
+                                                    guardaDados={this.guardaDadosCadastro} 
+                                                    cadastrarEscola={this.cadastrarEscola}
+                                                    mudaStatus={this.mudaStatus} 
+                                                    status={this.state.status}/>
                             </div>    
                             <div className={"container-loading" + this.state.showLoading + this.state.aumentar + this.state.moveLoading}>
                                 <div className="card-loading">

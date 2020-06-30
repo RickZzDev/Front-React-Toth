@@ -1,9 +1,9 @@
-import { doPublicRequest } from './basicRequest';
+import request from './basicRequest'
 
-const RESOURCE = '/escolas/cadastro'
+const RESOURCE = 'escolas/cadastro'
 
 const doCadastro = user => {
-    return doPublicRequest(RESOURCE, 'POST', user)
+    return request.post(RESOURCE, user)
 }
 
 export default doCadastro

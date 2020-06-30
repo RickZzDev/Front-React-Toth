@@ -1,34 +1,13 @@
-const URL = "http://localhost:8080"
+import axios from 'axios'
 
-export const doRequest = async (resource, method, dados = '', urlParam = '') => {
+const URL = "http://localhost:8080/"
 
-    const params = {
-        method: method,
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        }
+const request = axios.create({
+    baseURL: URL,
+    headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
     }
-    
-    if(!['GET', 'DELETE'].includes(method)) params.body = JSON.stringify(dados)
+})
 
- 
-    return await fetch(URL + resource + urlParam, params)
-   
-
-}
-
-export const doPublicRequest = async (resource, method, dados = '', urlParam = '') => {
-
-    const params = {
-        method: method,
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
-    
-    if(!['GET', 'DELETE'].includes(method)) params.body = JSON.stringify(dados)
-    return await fetch(URL + resource + urlParam, params)
-
-}
+export default request

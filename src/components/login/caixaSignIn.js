@@ -1,9 +1,12 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import Botao from '../componentesUtilitarios/botao'
 import Input from '../componentesUtilitarios/inputs'
 import './LoginWeb.css'
 import ImagemToth from '../componentesUtilitarios/imagemToth'
 import doLogin from '../../services/loginService'
+import { Redirect } from 'react-router-dom'
+import { isLogged } from '../../services/loginService'
+import { render } from '@testing-library/react'
 
 
 class LoginSignIn extends Component{
@@ -40,32 +43,23 @@ class LoginSignIn extends Component{
 
     tryLogin = async (event) => {
         event.preventDefault()
-        console.log(event)
-        console.log(this.state.dadosLogin)
-        const response = await doLogin(this.state.dadosLogin);
-        const jsonResponse = await response.json();
-        
-        console.log(jsonResponse.mensagem)
-        console.log(jsonResponse)
 
-        if(response.status === 200){
-            alert("Logado com sucesso!")
-        }
-        else if(response.status === 404)
+        const response = await doLogin(this.state.dadosLogin);
+
+        if(response.status === 200)
+            this.props.history.push('/escolha-ensino')
+        
+        else if(response.status === 403)
             this.setState({mensagemErro: {
                 ...this.state.mensagemErro,
-            },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem
+            },statusBotao:'visible transition-5',errorMessage:"Login ou senha incorretos"
         
         })
-
-        else if(response.status === 400)
-            this.setState({mensagemErro: {
-                ...this.state.mensagemErro,
-            },statusBotao:'visible transition-5',errorMessage:jsonResponse.mensagem})
 
     }
     
     render(){
+
          return(
             <div className="" >
                 <div className="row mt-2 mb-1">

@@ -1,0 +1,142 @@
+.backDiv {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.tothTitle-container {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    margin-top: 100px;
+    position: relative;
+}
+
+.tothTitle-text {
+    color: #FECC33 !important;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 6px;
+}
+
+.tothTitle-image {
+    width: 36px;
+    height: 36px;    
+    transform: translateY(-20%);
+}
+
+.containerText {
+    flex-basis: auto;
+    position: relative;
+}
+
+.fontSize-tothTitle {
+    font-size: 2.5rem;
+    color: #FECC33;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.fontSize-tothTitle span {
+    padding: 0;
+    margin: 0;
+    width: 32px;
+    height: 32px !important;
+}
+
+#animationTitle {
+    animation: animationTitle;
+    animation-duration: 1s;
+}
+
+.options-image {
+    flex-basis: 156px;
+    min-width: 156px;
+    height: 156px;
+    background-image: repeating-linear-gradient( to right top, #ededed, #fcfcfc 20%, #ededed 55%, #fcfcfc 75%, #ededed 100%);
+    border-radius: 5px;
+    border: 3px solid#f7faff;
+    animation: cardAnimation;
+    animation-duration: 1s;
+}
+
+.imgEscola {
+    width: 106px;
+    height: 106px;
+    transform: translateY(20%);
+}
+
+.efectCard:hover {
+    margin-top: -15px;
+    transform: scale(1.08, 1.08);
+    cursor: pointer;
+}
+
+.elementSelected {
+    border: 3px solid #FECC33 !important;
+}
+
+.iconConfirmed {
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.options-text {
+    width: 156px;
+}
+
+.fadeStep {
+    opacity: 0;
+    transition: 1.1s;
+}
+
+.visibilityNone {
+    display: none;
+}
+
+.containerSelect {
+    width: 650px;
+    min-height: 38px;
+    height: auto;
+}
+
+.opacity-0 {
+    opacity: 0;
+    transition: 1s;
+}
+
+.opacity-1 {
+    opacity: 1;
+    transition: 2s;
+}
+
+@keyframes animationTitle {
+    0% {
+      opacity: 0;  
+      margin-top: -40px;
+    }   
+
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes cardAnimation {
+    0% {
+        opacity: 0;  
+        margin-top: 90px;
+      }   
+  
+      100% {
+          opacity: 1;
+          margin-top: 0;
+      }
+}

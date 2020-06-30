@@ -7,13 +7,13 @@ import LogIn from '../login/caixaSignIn'
 
 
 
-function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,buscaCep,status,mudaStatus,guardaDados,mostraJson,guardaEndereco,cadastrarEscola,value, iniciarAnimacaoLogin}){
+function StepsLogInSignUp({confereLogin,erroSenha,erroEmail,valid,confereCnpj,buscaCep,status,mudaStatus,guardaDados,mostraJson,guardaEndereco,cadastrarEscola,value, iniciarAnimacaoLogin, history}){
  
     const guardaDadosCadastro = guardaDados
 
 
     if(status == 'LogIn'){
-        return <LogIn />
+        return (<LogIn history={history} />)
     }if(status == 'two'){
         return (
                 <div className="animAparecer">

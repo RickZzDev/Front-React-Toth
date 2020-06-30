@@ -126,3 +126,22 @@
 .margin-toth {
     margin-top: 50px;
 }
+
+
+
+/* Select */
+
+.selectContainer {
+    width: inherit;
+    height: 40px;
+    background-color:#f5f5f5;
+    border-bottom: 1px solid #e0e0e0;;
+}
+
+.selectContainer:hover {
+    cursor: pointer;
+}
+
+
+
+
