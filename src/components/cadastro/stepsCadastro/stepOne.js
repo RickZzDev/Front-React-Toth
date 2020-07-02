@@ -17,8 +17,6 @@ function StepOne({status,mudaStatus,guardaDados,mostraJson,value, confereCnpj,va
                     event.preventDefault()
                     if(valid == 'input-toth'){
                         mudaStatus('three', 1.4)
-                    }else{
-                        // console.log(valid)
                     }
                 }}>
                     <ErrorMessage message="Cnpj invalido" status={visibility} />

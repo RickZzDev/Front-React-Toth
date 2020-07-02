@@ -1,4 +1,4 @@
-import request from './basicRequest'
+import request from '../basicRequest'
 const TOKEN_KEY = "@Toth:escola"
 
 const RESOURCE = "escolas/autenticacao"
@@ -10,7 +10,7 @@ const doLogin = async user => {
 
         if(tryLogin.status == 200)
             localStorage.setItem(TOKEN_KEY, JSON.stringify(tryLogin.data))
-        
+
         return tryLogin
     } catch(erro) {
         return erro.response
@@ -28,7 +28,6 @@ export const verificaCnpj = cnpj => {
 
 export const getToken = () => {
     const escola = JSON.parse(localStorage.getItem(TOKEN_KEY));
-    console.log(escola)
     if(escola === null)
         return null
     else
@@ -37,7 +36,7 @@ export const getToken = () => {
 
 export const isLogged = () => {
     const escola = localStorage.getItem(TOKEN_KEY)
-    return JSON.parse(escola)
+     return escola != null ? JSON.parse(escola) : null
 }
 
 export const signOut = () => {

@@ -3,9 +3,9 @@ import Botao from '../componentesUtilitarios/botao'
 import Input from '../componentesUtilitarios/inputs'
 import './LoginWeb.css'
 import ImagemToth from '../componentesUtilitarios/imagemToth'
-import doLogin from '../../services/loginService'
+import doLogin from '../../services/escola/loginService'
 import { Redirect } from 'react-router-dom'
-import { isLogged } from '../../services/loginService'
+import { isLogged } from '../../services/escola/loginService'
 import { render } from '@testing-library/react'
 
 
@@ -45,6 +45,12 @@ class LoginSignIn extends Component{
         event.preventDefault()
 
         const response = await doLogin(this.state.dadosLogin);
+
+        if(response == null)
+            return this.setState({mensagemErro: {
+                ...this.state.mensagemErro,
+            },statusBotao:'visible transition-5',errorMessage:"Um erro ocorreu. Tente novamente"
+        })
 
         if(response.status === 200)
             this.props.history.push('/escolha-ensino')

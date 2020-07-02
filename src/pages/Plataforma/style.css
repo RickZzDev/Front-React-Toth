@@ -1,0 +1,39 @@
+ul, li {
+    margin: 0;   
+    padding: 0;
+}
+
+ul {
+   list-style: none; 
+}
+
+.nav {
+    width: 5vw;
+    height: 100vh;
+    border-radius: 0px 12px 12px 0px;
+    background: linear-gradient(#309df0, #66bdff);;
+}
+
+.nav li {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    margin: 16px 0px 16px 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.nav li img {
+    pointer-events: none;
+}
+
+.selecionado {
+    background-color: #2b9af0;
+}
+
+
+

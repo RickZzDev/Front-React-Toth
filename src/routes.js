@@ -7,7 +7,9 @@ import StepOne from './components/cadastro/stepsCadastro/stepOne'
 import StepTwo from './components/cadastro/stepsCadastro/stepTwo'
 import StepThree from './components/cadastro/stepsCadastro/stepThree'
 import StepFour from './components/cadastro/stepsCadastro/stepFour'
-import { isLogged } from './services/loginService'
+import { isLogged, getToken } from './services/escola/loginService'
+import request from './services/basicRequest'
+import Plataforma from './pages/Plataforma/index'
 
 const NotFound = () =>{
     return(
@@ -19,15 +21,24 @@ const NotFound = () =>{
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     return <Route {...rest} 
-            render = {props => isLogged() ? <Component/> : <Redirect to="/login" />}/>
+            render={(props) => {
+                if(isLogged()){
+                    request.defaults.headers.common['Authorization'] = 'Bearer ' + getToken()
+                    return <div><Component {...props} /></div>
+                }
+                else
+                    return <Redirect to={"/login"} />    
+            }} 
+            />
 
 }
 
-const Routes  = () => (
+const Routes = () => (
     <Router>
         <Switch>
             <Route path='/login' component={Login} />
             <PrivateRoute path='/escolha-ensino' component={EscolhaEnsino} />
+            <Route path='/plataforma' component={Plataforma} />
         </Switch>
     </Router>
 )

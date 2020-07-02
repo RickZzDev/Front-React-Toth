@@ -6,6 +6,8 @@ import TothTitle from './components/TothTitle'
 import imageFund from './images/fund.png'
 import imageMedio from './images/f-medio.png'
 import imageFundMedio from './images/medio.png'
+import { isLogged } from '../../services/escola/loginService'
+import { saveEscola } from '../../services/escola/cadastroInfo'
 
 const Index = (props) => {
 
@@ -16,6 +18,7 @@ const Index = (props) => {
     const [visibilityNone, setVisibilityNone] = useState('');
     const [valueSelect, setSelectValue] = useState(null);
     const [stepTwo, setStepTwo] = useState({displayNone: ' d-none ', opacity: ' opacity-0 '})
+    const [tipoSelecionado, setTipoEscola] = useState()
 
     const optionsMaterias = 
     [
@@ -40,6 +43,7 @@ const Index = (props) => {
     
         if(elementoPai.classList.contains("elementSelected")){
             elementoPai.classList.remove("elementSelected")
+            setTipoEscola('');
             setDisabled("disabled")
         }
         else{
@@ -48,10 +52,36 @@ const Index = (props) => {
                     element.classList.remove("elementSelected")
             });
             elementoPai.classList.add("elementSelected")
+            setTipoEscola(elemento.dataset.name)
             setDisabled("")
             setOption(elemento)
         }
     
+    }
+
+    const salvarDadosEscola = async () => {
+        const escolaLogada = isLogged()
+
+        if(escolaLogada != null){
+            delete escolaLogada.jwt;
+
+            escolaLogada.escola.tipo_escola = tipoSelecionado;
+            
+            let materiasSelecionadas = valueSelect.map((item) => {
+                return {"nome" : item.label}
+            })
+
+            escolaLogada.escola.materias = materiasSelecionadas;
+
+            const salvarEscola = await saveEscola(escolaLogada.escola)
+            
+            if(salvarEscola == null)
+                return console.log(salvarEscola)
+
+            if(salvarEscola.status == 200)
+                return true
+        }
+
     }
 
     const nextStep = () => {
@@ -64,7 +94,8 @@ const Index = (props) => {
             setTimeout(() => setStepTwo({displayNone: '', opacity: ' opacity-1 '}), 1200)
         }
         else if (step == 2){
-            this.props.history.push("/professores")
+            if(salvarDadosEscola())
+                props.history.push("/plataforma")
         }
     }
 
@@ -87,13 +118,13 @@ const Index = (props) => {
                 <div className={"etapaUm " + fadeStep + visibilityNone}>
                     <div className="d-flex justify-content-center align-items-center mt-5">
                         <div className="options-image mx-4 efectCard">
-                            <img className="img-fluid imgEscola" id="optionUm" onClick={elementoSelecionado} src={imageFund}/>
+                            <img className="img-fluid imgEscola" id="optionUm" data-name="FUNDAMENTAL" onClick={elementoSelecionado} src={imageFund}/>
                         </div>
                         <div className="options-image mx-4 efectCard">
-                            <img className="img-fluid imgEscola" id="optionDois" onClick={elementoSelecionado} src={imageFundMedio} />
+                            <img className="img-fluid imgEscola" id="optionDois" data-name="FUNDAMENTAL_MEDIO" onClick={elementoSelecionado} src={imageFundMedio} />
                         </div>
                         <div className="options-image mx-4 efectCard">
-                            <img className="img-fluid imgEscola" id="optionTres" onClick={elementoSelecionado} src={imageMedio} />
+                            <img className="img-fluid imgEscola" id="optionTres" data-name="MEDIO" onClick={elementoSelecionado} src={imageMedio} />
                         </div>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
@@ -113,7 +144,7 @@ const Index = (props) => {
                         <Select
                             placeholder="Seleciona as matérias"
                             value={valueSelect}
-                            onChange={(selected) => {setSelectValue(selected); console.log(valueSelect)}}
+                            onChange={(selected) => {setSelectValue(selected)}}
                             options={optionsMaterias}
                             isMulti
                         />

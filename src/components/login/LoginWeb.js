@@ -8,7 +8,7 @@ import HolderMessage from './HolderMessage'
 import ContagemProgress from './contagemProgress'
 import doCadastro from '../../services/cadastroService'
 import {cnpjMask,cepMask} from '../../validations/masks'
-import {verificaCnpj} from '../../services/loginService'
+import {verificaCnpj} from '../../services/escola/loginService'
 import tothLoading from './images/TOTH.png'
 import okayLoading from './images/okay.png';
 
@@ -128,7 +128,6 @@ class Login extends Component{
         var cep = await retorno.json()
         if(cep.erro){
             this.setState({valid:'input-toth-invalid'})
-            console.log('invalido')
         }else{
             this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco:{...this.state.dadosRegistro.endereco,
                 logradouro : cep.logradouro,
@@ -139,10 +138,6 @@ class Login extends Component{
         }
     }
 
-    mostraJson = () =>{
-        console.log(this.state.dadosRegistro)
-    }
-
     guardaEndereco = async (event) =>{
        
         const {name, value} = event.target
@@ -151,7 +146,6 @@ class Login extends Component{
             this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco: {...this.state.dadosRegistro.endereco,[name]:retorno}}})
         }else{
             this.setState({dadosRegistro:{...this.state.dadosRegistro, endereco: {...this.state.dadosRegistro.endereco,[name]:value}}})
-            console.log(this.state.dadosRegistro)
         }
 
     }
@@ -198,12 +192,11 @@ class Login extends Component{
                 if(retorno.status == 400){
                     this.setState({valid:'input-toth-invalid'})
                     var message = await retorno.json()
-                    console.log(message)
                 }else{
                     this.setState({valid:'input-toth'})
                 }
             } catch(erro) {
-                console.log(erro)
+                return erro
             }
         }
     }
