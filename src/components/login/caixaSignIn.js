@@ -52,8 +52,21 @@ class LoginSignIn extends Component{
             },statusBotao:'visible transition-5',errorMessage:"Um erro ocorreu. Tente novamente"
         })
 
-        if(response.status === 200)
-            this.props.history.push('/escolha-ensino')
+        
+
+        if(response.status === 200){
+            if(response.data.escola.materias == null || response.data.escola.materias == [])
+                this.props.history.push("/escolha-ensino")
+            else
+                this.props.history.push("/plataforma")
+        }
+
+        else if(response.status == 400) {
+            this.setState({mensagemErro: {
+                ...this.state.mensagemErro,
+            },statusBotao:'visible transition-5',errorMessage:"Login ou senha incorretos"})
+        }
+            
         
         else if(response.status === 403)
             this.setState({mensagemErro: {

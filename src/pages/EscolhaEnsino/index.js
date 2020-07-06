@@ -76,7 +76,7 @@ const Index = (props) => {
             const salvarEscola = await saveEscola(escolaLogada.escola)
             
             if(salvarEscola == null)
-                return console.log(salvarEscola)
+                return null
 
             if(salvarEscola.status == 200)
                 return true
