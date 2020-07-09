@@ -133,3 +133,12 @@ p {
     margin-left: 0;
     transition: 0.5s;
 }
+
+.container-content {
+    height: 100px;
+    flex-grow: 1;
+}
+
+.dnone {
+    display: none;
+}

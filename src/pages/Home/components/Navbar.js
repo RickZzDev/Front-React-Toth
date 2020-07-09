@@ -17,6 +17,7 @@ const Navbar = (props) => {
     const [itemSelecionado, setSelecionado] = useState()
     const [subItemSelecionado, setSubSelecionado] = useState()
     const [anteriormenteSelecionado, setAnteriormenteSelecionado] = useState(false)
+    const [dnone, setDisplay] = useState('dnone')
 
     const telaSelecionada = props.telaSelecionada
     const setTelaSelecionada = props.setTelaSelecionada
@@ -43,13 +44,14 @@ const Navbar = (props) => {
         if(subItemSelecionado != null)
             subItemSelecionado.classList.remove("subSelecionado")
 
-        itemMenu.classList.add("selecionado")
-        setSelecionado(itemMenu)
-
-        if(submenu.status === "menuDesativado") 
-            setSubMenu({"status" : "menuAtivado", "itemSelecionado" : dataId})
+        if(submenu.status === "menuDesativado"){
+            mostrarSubMenu(dataId)
+        }
         else
             setSubMenu({"itemSelecionado" : dataId})
+
+        itemMenu.classList.add("selecionado")
+        setSelecionado(itemMenu)
 
         switch(dataId) {
             case "1":
@@ -69,12 +71,16 @@ const Navbar = (props) => {
             }
         }
 
-        
-
     }
 
     const esconderSubMenu = () => {
-        setSubMenu({"status" : "menuDesativado", "itemSelecionado" : "0"})
+        setSubMenu({...submenu,"status" : "menuDesativado"})
+        setTimeout(() => setDisplay('dnone'), 500)
+    }
+
+    const mostrarSubMenu = (dataId) => {
+        setDisplay('')
+        setTimeout(() => setSubMenu({"status" : "menuAtivado", "itemSelecionado" : dataId}), 100)
     }
 
     return(
@@ -92,19 +98,21 @@ const Navbar = (props) => {
                     </li>
                 </ul>
             </nav>
-            <div className={`submenu ${submenu.status}`} id="submenu">
+            <div className={`submenu ${submenu.status} ${dnone}`} id="submenu">
                 <div className="linha d-flex m-0 mt-3 p-0 align-items-center justify-content-between header-menu">
                     <h2>Toth</h2>
                     <spam onClick={() => esconderSubMenu()}>
                         <img src={seta} />
                     </spam>
                 </div>
-                <SubMenu itemSelecionado={submenu.itemSelecionado}
+                <SubMenu dnone={dnone}   
+                         setDisplay={setDisplay}
+                         itemSelecionado={submenu.itemSelecionado}
                          subItemSelecionado={subItemSelecionado}
                          setSubSelecionado={setSubSelecionado}
                          setTelaSelecionada={setTelaSelecionada}
                          telaSelecionada={telaSelecionada}
-                         anteriormenteSelecionado={anteriormenteSelecionado} />
+                         anteriormenteSelecionado={anteriormenteSelecionado}/>
             </div>
         </>
     )

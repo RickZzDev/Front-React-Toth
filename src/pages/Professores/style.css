@@ -1,0 +1,210 @@
+.container-professores {
+    margin-top: 10px;
+    flex-basis: 1120px;
+    flex-shrink: 1;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.22);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.22);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.22);
+}
+
+.toolbar {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+}
+
+.add-professor {
+    width: 180px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.add-professor spam img {
+    margin-top: -10px;
+    pointer-events: none;
+}
+
+.add-professor p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 6px !important;
+    margin-left: 8px !important;
+    pointer-events: none;
+}
+
+.container-search {
+    width: 300px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pesquisa {
+    width: 255px;
+    height: 100%;
+    padding-left: 15px;
+    border-radius: 10px 0px 0px 10px;
+    border: 0;
+
+    font-size: 15px;
+    font-family: 'Verdana';
+}
+
+.button-search {
+    width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 8px 8px 0px;
+    background-color: #ededed;
+
+    cursor: pointer;
+}
+
+.button-search img {
+    width: 20px;
+    height: 20px;
+}
+
+.button-search img:hover {
+    width: 24px;
+    height: 24px;
+}
+
+.container-cards {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+    background-color: white;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cards {
+    flex-basis: 260px;
+    max-width: 260px;
+    height: 320px;
+    border-radius: 16px;
+    margin-left: 53.33px;
+    margin-right: 53.33px;
+    margin-bottom: 25px;
+    background-color: #f2f2f2;
+    position: relative;
+    display: flex;
+
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.container-image-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-image-card::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 102px;
+    border-radius: 50%;
+    height: 102px;
+    background-color: red;
+}
+
+.infoUm-card {
+    width: 60%;
+    height: 50%;
+    padding-top: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+
+}
+
+.infoDois-card {
+    height: 50%;
+    width: 100%;
+}
+
+.container-image-card img{
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    z-index: 99;
+}
+
+.titulo, .informacao {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.nome {
+    font-weight: 600 !important;
+}
+
+.text {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text:nth-child(2n - 1) {
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 550;
+}
+
+.text:nth-child(2) {
+    height: 96px;
+}
+
+
+.tituloDois {
+    color: #b8b8b8;
+}
+
+.icons span {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.container-prof {
+    max-width: 1300px;
+    flex-basis: 1300px;
+    height: auto;
+}
+
+.frente-card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}

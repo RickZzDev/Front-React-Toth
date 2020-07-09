@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {BrowserRouter as Router, Switch,Route,Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Switch,Route,Redirect, BrowserRouter} from 'react-router-dom'
 import Login from './components/login/LoginWeb'
 import EscolhaEnsino from './pages/EscolhaEnsino/index'
 import StepsLogInSignUp from './components/cadastro/StepsLogInSignUp'
@@ -9,7 +9,7 @@ import StepThree from './components/cadastro/stepsCadastro/stepThree'
 import StepFour from './components/cadastro/stepsCadastro/stepFour'
 import { isLogged, getToken } from './services/escola/loginService'
 import request from './services/basicRequest'
-import Plataforma from './pages/Plataforma/index'
+import Home from './pages/Home/index'
 
 const NotFound = () =>{
     return(
@@ -34,13 +34,15 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 }
 
 const Routes = () => (
-    <Router>
-        <Switch>
-            <Route path='/login' component={Login} />
-            <PrivateRoute path='/escolha-ensino' component={EscolhaEnsino} />
-            <Route path='/plataforma' component={Plataforma} />
-        </Switch>
-    </Router>
+    <BrowserRouter>
+        <Router>
+            <Switch>
+                <Route path='/login' component={Login} />
+                <PrivateRoute path='/escolha-ensino' component={EscolhaEnsino} />
+                <Route path='/home' component={Home} />
+            </Switch>
+        </Router>
+    </BrowserRouter>
 )
 
 export default Routes

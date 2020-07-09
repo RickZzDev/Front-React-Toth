@@ -8,6 +8,8 @@ import chapeuPreto from './images/chapeu-preto.png'
 import salaPreto from './images/sala-preto.png'
 import salaBranco from './images/sala-branco.png'
 
+import { Link } from 'react-router-dom'
+
 const SubMenu = (props) => {
 
     const itemSelecionado = props.itemSelecionado
@@ -15,9 +17,11 @@ const SubMenu = (props) => {
     const setSubSelecionado = props.setSubSelecionado
     const setTelaSelecionada = props.setTelaSelecionada
     const telaSelecionada = props.telaSelecionada
+    const setDisplay = props.setDisplay
     const anteriormenteSelecionado = props.anteriormenteSelecionado
 
     useEffect(() => {
+        console.log(itemSelecionado)
         setItens({
             "1": {
                 "1" : chapeuPreto,
@@ -117,8 +121,11 @@ const SubMenu = (props) => {
 
     useEffect(() => {
         if(subItemSelecionado != null){
-            document.getElementById(subItemSelecionado.id).classList.add("subSelecionado")
-            alterarIcone(subItemSelecionado.id)
+            setDisplay('')
+            setTimeout(() => {
+                document.getElementById(subItemSelecionado.id).classList.add("subSelecionado")
+                alterarIcone(subItemSelecionado.id)
+            }, 100)
         }
         
     }, [anteriormenteSelecionado])
