@@ -3,6 +3,9 @@ import Navbar from './components/Navbar'
 import './style.css'
 
 import Professores from '../Professores/Professores'
+import Modal from '../Modal'
+
+import Cadastro from '../Professores/Cadastro/Cadastro'
 
 const Index = () => {
     
@@ -11,12 +14,17 @@ const Index = () => {
         "submenu" : "1"
     })
 
+    const [modal, setModal] = useState({
+        "status" : "ativado",
+        "component" : <Cadastro />
+    })
+
     const switchContent = (telaSelecionada) => {
         switch(telaSelecionada.menu) {
             case "1": 
                 switch(telaSelecionada.submenu) {
                     case "1":
-                        return <Professores />
+                        return <Professores modal={modal} />
                     case "2":
                         break;
                     case "3":
@@ -47,13 +55,16 @@ const Index = () => {
     }
 
     return (
-        <div className="container-fluid m-0 p-0 container-plataforma d-flex flex-row">
-            <Navbar telaSelecionada={telaSelecionada}
-                    setTelaSelecionada={setTelaSelecionada}/>
-            <div className="container-content">
-                {switchContent(telaSelecionada)}
+        <>
+            <Modal modal={modal} />
+            <div className="container-fluid m-0 p-0 container-plataforma d-flex flex-row">
+                <Navbar telaSelecionada={telaSelecionada}
+                        setTelaSelecionada={setTelaSelecionada}/>
+                <div className="container-content">
+                    {switchContent(telaSelecionada)}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
