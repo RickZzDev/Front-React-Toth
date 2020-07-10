@@ -25,8 +25,9 @@
 }
 
 .progress-fragment {
-    width: 0;
+    width: 0px;
     height: 4px;
+    transition: 1s;
 }
 
 .completed-bar {

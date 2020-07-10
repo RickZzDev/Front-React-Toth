@@ -13,8 +13,8 @@ const Index = () => {
     })
 
     const [modal, setModal] = useState({
-        "status" : "ativado",
-        "componente" : "cadastro"
+        "status" : "desativado",
+        "componente" : ""
     })
 
     const switchContent = (telaSelecionada) => {
@@ -22,7 +22,7 @@ const Index = () => {
             case "1": 
                 switch(telaSelecionada.submenu) {
                     case "1":
-                        return <Professores modal={modal} />
+                        return <Professores setModal={setModal} />
                     case "2":
                         break;
                     case "3":

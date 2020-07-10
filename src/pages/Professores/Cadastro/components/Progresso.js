@@ -17,9 +17,7 @@ import materiasCinza from './images/materias-cinza.png'
 import materiasGrande from './images/materias-grande.png'
 import materiasPequeno from './images/materias-pequeno.png'
 
-const Progresso = () => {
-
-    const [etapa, setEtapa] = useState(1)
+const Progresso = ({etapasCadastro, nextEtapa}) => {
 
     const [progressos, setProgressos] = useState({
         "one" : {
@@ -54,18 +52,52 @@ const Progresso = () => {
 
     useEffect(() => {
 
-        switch(etapa) {
+        switch(etapasCadastro) {
+            case 1:
+                setProgressos({...progressos, "one" : {
+                    "img" : userAzulGrande,
+                    "imgSize" : "grande",
+                    "bar" : "completed-bar"
+                }, 
+                    "two" : {
+                        "img" : adressCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
+                },
+                    "three" : {
+                        "img" : teacherCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
+                },
+                    "four" : {
+                        "img" : materiasCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
+                }
+                })
+                break;
             case 2:
                 setProgressos({...progressos, "one" : {
                     "img" : userAzulPequeno,
                     "imgSize" : "pequeno",
                     "bar" : "completed-bar"
                 }, 
-                "two" : {
-                    "img" : adressAmareloGrande,
-                    "imgSize" : "grande",
-                    "bar" : "completed-bar"
-                }})
+                    "two" : {
+                        "img" : adressAmareloGrande,
+                        "imgSize" : "grande",
+                        "bar" : "completed-bar"
+                },
+                    "three" : {
+                        "img" : teacherCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
+                },
+                    "four" : {
+                        "img" : materiasCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
+                }
+                })
                 break;
             case 3:
                 setProgressos({...progressos, "one" : {
@@ -82,6 +114,11 @@ const Progresso = () => {
                         "img" : teacherGrandeVerde,
                         "imgSize" : "grande",
                         "bar" : "completed-bar"
+                },
+                    "four" : {
+                        "img" : materiasCinza,
+                        "imgSize" : "pequeno",
+                        "bar" : ""
                 }
                 })
                 break;
@@ -110,7 +147,7 @@ const Progresso = () => {
                 break;
         }
 
-    }, [etapa])
+    }, [etapasCadastro])
 
     return(
         <>

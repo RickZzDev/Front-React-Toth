@@ -9,7 +9,7 @@ import deletar from './images/delete.png'
 
 import { listarTodos } from '../../services/professores/listar'
 
-const Professores = ({modal}) => {
+const Professores = ({setModal}) => {
 
     const [listaProfessores, setProfessores] = useState([])
 
@@ -78,7 +78,7 @@ const Professores = ({modal}) => {
             <div className="container-prof d-flex justify-content-center">
                 <div className="container-professores ml-3 pb-4">
                     <div className="toolbar px-2">
-                        <div className="add-professor pb-1 ml-2">
+                        <div onClick={() => setModal({"status" : "ativado", "componente" : "cadastro"})} className="add-professor pb-1 ml-2">
                            <span><img src={add} /></span><p> Adicionar professor</p>
                         </div>
                         <div className="container-search mr-3">

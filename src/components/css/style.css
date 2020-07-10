@@ -32,7 +32,7 @@
 .placeholder-cep::after, .placeholder-logradouro::after, .placeholder-bairro::after,
 .placeholder-cidade::after, .placeholder-estado::after, .placeholder-numero::after  {
     position: absolute;
-    color: #969696;
+    color:  ;
     left: 2px;
     top: 38px;
     transform: translateY(-50%);
