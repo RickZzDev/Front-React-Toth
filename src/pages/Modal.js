@@ -1,11 +1,23 @@
 import React from 'react'
 import './style.css'
 
-const Modal = ({modal}) => {
+import Cadastro from './Professores/Cadastro/Cadastro'
+
+const Modal = ({modal, setModal}) => {
+
+    const closeModal = () => {
+        setModal({"status" : "desativado", "component" : null})
+    }
 
     // Se a modal estiver ativada, renderiza o componente passado pra ela.
     if(modal.status == "ativado")
-        return <div className="container-modal">{modal.component}</div>
+
+        // Verifica qual componente a modal renderizará
+        switch(modal.componente) {
+            case "cadastro" :
+                return <div className="container-modal"><Cadastro closeModal={closeModal}/></div>
+        }
+
     else
         return null
 

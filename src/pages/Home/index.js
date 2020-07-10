@@ -5,8 +5,6 @@ import './style.css'
 import Professores from '../Professores/Professores'
 import Modal from '../Modal'
 
-import Cadastro from '../Professores/Cadastro/Cadastro'
-
 const Index = () => {
     
     const [telaSelecionada, setTelaSelecionada] = useState({
@@ -16,7 +14,7 @@ const Index = () => {
 
     const [modal, setModal] = useState({
         "status" : "ativado",
-        "component" : <Cadastro />
+        "componente" : "cadastro"
     })
 
     const switchContent = (telaSelecionada) => {
@@ -56,7 +54,7 @@ const Index = () => {
 
     return (
         <>
-            <Modal modal={modal} />
+            <Modal modal={modal} setModal={setModal} />
             <div className="container-fluid m-0 p-0 container-plataforma d-flex flex-row">
                 <Navbar telaSelecionada={telaSelecionada}
                         setTelaSelecionada={setTelaSelecionada}/>

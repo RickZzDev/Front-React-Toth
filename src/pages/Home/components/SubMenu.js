@@ -21,7 +21,6 @@ const SubMenu = (props) => {
     const anteriormenteSelecionado = props.anteriormenteSelecionado
 
     useEffect(() => {
-        console.log(itemSelecionado)
         setItens({
             "1": {
                 "1" : chapeuPreto,
