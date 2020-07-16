@@ -53,12 +53,12 @@ class LoginSignIn extends Component{
         })
 
         
-
+        console.log(response.data.escola)
         if(response.status === 200){
-            if(response.data.escola.materias == null || response.data.escola.materias == [])
+            if(response.data.escola.materias == null || response.data.escola.materias == [] || response.data.escola.materias.length == 0)
                 this.props.history.push("/escolha-ensino")
             else
-                this.props.history.push("/plataforma")
+                this.props.history.push("/home")
         }
 
         else if(response.status == 400) {

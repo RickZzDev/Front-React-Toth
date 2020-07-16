@@ -73,6 +73,45 @@ const Index = (props) => {
 
             escolaLogada.escola.materias = materiasSelecionadas;
 
+            function gerarAnos(tipo, anos) {
+
+                switch(tipo) {
+                    case "FUNDAMENTAL": 
+                        for(let i = 5; i <= 9; i++) {
+                            anos.push({"numero" : `${i}F`})
+                        }
+                        break;
+                    case "FUNDAMENTAL_MEDIO": 
+                        for(let i = 5; i <= 12; i++) {
+                            if(i <= 9)
+                                anos.push({"numero" : `${i}F`})
+                            else
+                                anos.push({"numero" : `${i - 9}M`})
+                        }
+                        break;
+                    case "MEDIO": 
+                        for(let i = 1; i <= 3; i++) {
+                            anos.push({"numero" : `${i}M`})
+                        }
+                        break;
+                }
+
+                return anos
+
+            }
+
+            const anosescola = []
+            if(tipoSelecionado == "FUNDAMENTAL")
+                gerarAnos("FUNDAMENTAL", anosescola)
+
+            if(tipoSelecionado == "FUNDAMENTAL_MEDIO")
+                gerarAnos("FUNDAMENTAL_MEDIO", anosescola)
+
+            if(tipoSelecionado == "MEDIO")
+                gerarAnos("MEDIO", anosescola)
+
+            escolaLogada.escola.anos = anosescola
+
             const salvarEscola = await saveEscola(escolaLogada.escola)
             
             if(salvarEscola == null)

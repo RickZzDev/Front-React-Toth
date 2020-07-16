@@ -53,11 +53,13 @@ class Login extends Component{
             visibleItens: '',
             reporSteps: '',
             dadosRegistro:{
-                "nome":'',
+                "nome" : '',
+                "acesso" : {
+                    'senha':'',
+                    "login" : ''
+                },
                 "cnpj": '',
                 'email':'',
-                'login':'',
-                'senha':'',
                 'endereco':{
                     'cep':'',
                     'logradouro':'',
@@ -87,7 +89,7 @@ class Login extends Component{
            var retorno = cnpjMask(value)
            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:retorno}})
         }else if(name == 'confirm-senha'){
-            if(this.state.dadosRegistro.senha == value){
+            if(this.state.dadosRegistro.acesso.senha == value){
                 this.setState({valid:'input-toth'})    
             }else{
                 this.setState({valid:'input-toth-invalid'})
@@ -107,8 +109,8 @@ class Login extends Component{
        
         }
         else if(name == 'senha'){
-            this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}}, ()=>{
-                if(this.state.dadosRegistro.senha.length >= 5 &&  this.state.dadosRegistro.email.length <=225){
+            this.setState({dadosRegistro:{...this.state.dadosRegistro, acesso: {...this.state.dadosRegistro.acesso,[name]:value}}}, ()=>{
+                if(this.state.dadosRegistro.acesso.senha.length >= 5 &&  this.state.dadosRegistro.email.length <=225){
                     this.setState({erroSenha:'invisible d-none'})  
                 }else{
                     this.setState({erroSenha:'visible'})
@@ -116,9 +118,14 @@ class Login extends Component{
             })
          
         }
+        else if(name == "login") {
+            this.setState({dadosRegistro: {...this.state.dadosRegistro, acesso: {...this.state.dadosRegistro.acesso, [name] : value}}})
+        }
         else{
             this.setState({dadosRegistro:{...this.state.dadosRegistro,[name]:value}})
         }
+
+        console.log(this.state.dadosRegistro)
         
     }
 
@@ -196,6 +203,7 @@ class Login extends Component{
                     this.setState({valid:'input-toth'})
                 }
             } catch(erro) {
+                console.log(erro)
                 return erro
             }
         }

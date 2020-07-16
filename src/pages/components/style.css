@@ -21,6 +21,7 @@
     font-size: 14px;
     color: #4481e3;
     font-weight: bold;
+    position: absolute;
 }
 
 .cont-input {
