@@ -12,10 +12,13 @@ import EtapaTres from './components/EtapaTres'
 import EtapaQuatro from './components/EtapaQuatro'
 
 import saveProfessor from '../../../services/professores/Cadastrar'
+import { isLogged } from '../../../services/escola/loginService'
 
-const Cadastro = ({closeModal}) => {
+const Cadastro = ({closeModal, setAlert, setProfessores, professoresListados}) => {
 
     const [etapasCadastro, nextEtapa] = useState(1);
+
+    const [mensagemDeErro, setMensagemDeErro] = useState({'ativado' : 'd-none', 'mensagem' : ''})
 
     const [dadosCadastro, setDados] = useState({
         1 : {
@@ -63,10 +66,23 @@ const Cadastro = ({closeModal}) => {
             "materias" : dadosCadastro[3].materias,
             "anos" : dadosCadastro[4].anos
         }
+
+        const idEscolaLogada = isLogged().escola.id
         
-        const resultSaveProfessor = await saveProfessor(prof)
-        console.log(prof)
-        console.log(resultSaveProfessor)
+        const resultSaveProfessor = await saveProfessor(idEscolaLogada, prof)
+
+        if(resultSaveProfessor.status == 200) {
+            closeModal()
+            setAlert('ativado')
+            setMensagemDeErro({'status' : 'd-none', 'mensagem' : ''})
+
+            professoresListados = resultSaveProfessor.data.professores
+            setProfessores(professoresListados)
+            setTimeout(() => setAlert('d-none'), 6900)
+        }
+        else 
+            setMensagemDeErro({'status' : '', 'mensagem' : resultSaveProfessor.data.mensagem})
+        
     }
 
     const proximaEtapa = (etapa) => {
@@ -84,7 +100,6 @@ const Cadastro = ({closeModal}) => {
 
     const carregarEtapa = () => {
         
-        console.log(dadosCadastro)
         switch(etapasCadastro) {
             case 1:
                 return <EtapaUm setDados={setDados} dadosCadastro={dadosCadastro} etapa={etapasCadastro}/>
@@ -111,6 +126,9 @@ const Cadastro = ({closeModal}) => {
                     </div>
                     <div className="container-steps px-5">
                         {carregarEtapa()}
+                    </div>
+                    <div className={`alert alert-danger mx-5 ${mensagemDeErro.ativado}`}>
+                        {mensagemDeErro.mensagem}
                     </div>
                     <div className="buttons px-5">
                         <button onClick={() => etapaAnterior(etapasCadastro - 1)} className={`btn ${buttonsColor[etapasCadastro - 1]}`}>Voltar</button>

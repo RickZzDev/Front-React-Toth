@@ -6,6 +6,10 @@ import Professores from '../Professores/Professores'
 import Modal from '../Modal'
 
 const Index = () => {
+
+    const [alerta, setAlert] = useState('d-none')
+
+    const [listaProfessores, setProfessores] = useState([])
     
     const [telaSelecionada, setTelaSelecionada] = useState({
         "menu" : "1",
@@ -14,7 +18,8 @@ const Index = () => {
 
     const [modal, setModal] = useState({
         "status" : "desativado",
-        "componente" : ""
+        "componente" : "",
+        "dados" : ''
     })
 
     const switchContent = (telaSelecionada) => {
@@ -22,7 +27,7 @@ const Index = () => {
             case "1": 
                 switch(telaSelecionada.submenu) {
                     case "1":
-                        return <Professores setModal={setModal} />
+                        return <Professores setModal={setModal} alerta={alerta} listaProfessores={listaProfessores} setProfessores={setProfessores}/>
                     case "2":
                         break;
                     case "3":
@@ -54,8 +59,8 @@ const Index = () => {
 
     return (
         <>
-            <Modal modal={modal} setModal={setModal} />
-            <div className="container-fluid m-0 p-0 container-plataforma d-flex flex-row">
+            <Modal modal={modal} professores={listaProfessores} setProfessores={setProfessores} setModal={setModal} setAlert={setAlert} />
+            <div className="container-fluid m-0 p-0 container-p lataforma d-flex flex-row">
                 <Navbar telaSelecionada={telaSelecionada}
                         setTelaSelecionada={setTelaSelecionada}/>
                 <div className="container-content">

@@ -3,7 +3,9 @@ import './style.css'
 
 import Cadastro from './Professores/Cadastro/Cadastro'
 
-const Modal = ({modal, setModal}) => {
+import ExcluirProfessor from './Professores/ExcluirProfessor/ExcluirProfessor'
+
+const Modal = ({modal, setModal, setAlert, professores, setProfessores}) => {
 
     const closeModal = () => {
         setModal({"status" : "desativado", "component" : null})
@@ -15,7 +17,9 @@ const Modal = ({modal, setModal}) => {
         // Verifica qual componente a modal renderizará
         switch(modal.componente) {
             case "cadastro" :
-                return <div className="container-modal"><Cadastro closeModal={closeModal}/></div>
+                return <div className="container-modal"><Cadastro closeModal={closeModal} setAlert={setAlert} professoresListados={professores} setProfessores={setProfessores} /></div>
+            case "excluirProfessor" : 
+            return <div className="container-modal"><ExcluirProfessor /></div>
         }
 
     else

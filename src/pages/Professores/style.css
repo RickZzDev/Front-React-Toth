@@ -270,3 +270,50 @@
     width: 32px;
     height: 32px;
 }
+
+.container-titulo {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.success {
+    margin-bottom: 0 !important;
+}
+
+.ativado::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    border-radius: .25rem;
+    background-color: #155724;
+    left: 0;
+    bottom: 0;
+    animation: diminuir 7s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes diminuir {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0;
+    }
+}
+
+.cont-prof {
+    width: 100%;
+}

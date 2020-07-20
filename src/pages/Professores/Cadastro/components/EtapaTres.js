@@ -10,13 +10,16 @@ const EtapaTres = ({setDados, dadosCadastro}) => {
     const [valorSelect, setValorSelect] = useState(null);
 
     useEffect(() => {
-
-        const escolaLogada = isLogged()
-        const materiasDaEscolaLogada = escolaLogada.escola.materias
+        
+        const escolaLogada = isLogged().escola
+        const materiasDaEscolaLogada = escolaLogada.materias
 
         const materias = materiasDaEscolaLogada.map(materia => {
             return {"value" : materia.id, "label" : materia.nome}
         })
+
+        console.log(escolaLogada)
+        console.log(materiasDaEscolaLogada)
 
         setMateriasDaEscola(materias)
 
@@ -34,10 +37,10 @@ const EtapaTres = ({setDados, dadosCadastro}) => {
         <div className="container-tres">
             <div className="titulo-materias">
                 <h1>Matérias</h1> 
-                <h6>Selecione as materias do professor</h6> 
             </div>
-            <div className="container-select">
-                <div className="cont-etapaTres">
+            <div className="container-select d-flex flex-column">
+                <h6>Selecione as materias do professor</h6> 
+                <div className="cont-etapaTres mt-2">
                     <Select
                         placeholder="Seleciona as matérias"
                         value={valorSelect}

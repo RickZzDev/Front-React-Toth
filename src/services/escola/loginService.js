@@ -26,6 +26,10 @@ export const verificaCnpj = cnpj => {
     }
 }
 
+export const doLog = escola => {
+    localStorage.setItem(TOKEN_KEY, JSON.stringify(escola))
+}
+
 export const getToken = () => {
     const escola = JSON.parse(localStorage.getItem(TOKEN_KEY));
     if(escola === null)

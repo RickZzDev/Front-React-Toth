@@ -10,50 +10,38 @@ const EtapaQuatro = ({setDados, dadosCadastro}) => {
     const [valorSelect, setValorSelect] = useState(null);
 
     useEffect(() => {
-        const escolaLogged = isLogged().escola
-        if(escolaLogged.tipo_escola == "Fundamental e Médio") 
-            setAnos([
-                {"label" : "5º Ano Fundamental", "value" : "5f"},
-                {"label" : "6º Ano Fundamental", "value" : "6f"},
-                {"label" : "7º Ano Fundamental", "value" : "7f"},
-                {"label" : "8º Ano Fundamental", "value" : "8f"},
-                {"label" : "9º Ano Fundamental", "value" : "9f"},
-                {"label" : "1º Ano Médio", "value" : "1m"},
-                {"label" : "2º Ano Médio", "value" : "2m"},
-                {"label" : "3º Ano Médio", "value" : "3m"}
-            ])
-        else if(escolaLogged.tipo_escola == "Fundamental")
-            setAnos(anos = [
-                {"label" : "5º Ano Fundamental", "value" : "5f"},
-                {"label" : "6º Ano Fundamental", "value" : "6f"},
-                {"label" : "7º Ano Fundamental", "value" : "7f"},
-                {"label" : "8º Ano Fundamental", "value" : "8f"},
-                {"label" : "9º Ano Fundamental", "value" : "9f"}
-            ])
-        else if(escolaLogged.tipo_escola == "Médio")
-            setAnos(anos = [
-                {"label" : "1º Ano Médio", "value" : "1m"},
-                {"label" : "2º Ano Médio", "value" : "2m"},
-                {"label" : "3º Ano Médio", "value" : "3m"}
-            ])
+        const anosDaEscolaLogada = isLogged().escola.anos
+        
+        const criarOption = ano => {
+            if(ano.id <= 9)
+                return { "value" : ano.id, "label" : `${ano.id}º Ano Fundamental` }
+            else
+                return { "value" : ano.id, "label" : `${ano.id}º Ano Médio` }
+        }
+
+        const criandoOptionsComOsAnos = anosDaEscolaLogada.map(ano => { return criarOption(ano) })
+        setAnos(criandoOptionsComOsAnos)
+        
     }, [])
 
     useEffect(() => {
         if(valorSelect != null)
             setDados(
                 {...dadosCadastro, 
-                    4 : {"anos" : valorSelect.map(valor => { return {"id" : valor.value, "nome" : valor.label} })}}
+                    4 : {"anos" : valorSelect.map(valor => { return {"id" : valor.value, "ano" : valor.label.split("º")[0]} })}}
             )
+        
+        console.log(dadosCadastro[4].anos)
     }, [valorSelect])
 
     return(
         <div className="container-tres">
             <div className="titulo-materias">
-                <h1>Anos</h1> 
-                <h6>Selecione os anos em que o professor dá aula</h6> 
+                <h1>Anos</h1>
             </div>
-            <div className="container-select">
-                <div className="cont-etapaTres">
+            <div className="container-select d-flex flex-column">
+                <h6>Selecione os anos em que o professor dá aula</h6> 
+                <div className="cont-etapaTres mt-2">
                     <Select
                         placeholder="Seleciona os anos"
                         value={valorSelect}
