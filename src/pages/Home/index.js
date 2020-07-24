@@ -3,17 +3,19 @@ import Navbar from './components/Navbar'
 import './style.css'
 
 import Professores from '../Professores/Professores'
+import Turmas from '../Turmas/Turmas'
+import Alunos from '../Alunos/Alunos'
 import Modal from '../Modal'
 
 const Index = () => {
 
-    const [alerta, setAlert] = useState('d-none')
+    const [alerta, setAlert] = useState({'status' : 'd-none', 'msg' : ''})
 
     const [listaProfessores, setProfessores] = useState([])
     
     const [telaSelecionada, setTelaSelecionada] = useState({
         "menu" : "1",
-        "submenu" : "1"
+        "submenu" : "3"
     })
 
     const [modal, setModal] = useState({
@@ -29,9 +31,9 @@ const Index = () => {
                     case "1":
                         return <Professores setModal={setModal} alerta={alerta} listaProfessores={listaProfessores} setProfessores={setProfessores}/>
                     case "2":
-                        break;
+                        return <Turmas />
                     case "3":
-                        break;
+                        return <Alunos />
                 }
                 break;
             case "2": 
@@ -60,7 +62,7 @@ const Index = () => {
     return (
         <>
             <Modal modal={modal} professores={listaProfessores} setProfessores={setProfessores} setModal={setModal} setAlert={setAlert} />
-            <div className="container-fluid m-0 p-0 container-p lataforma d-flex flex-row">
+            <div className="container-fluid m-0 p-0 container-plataforma d-flex flex-row">
                 <Navbar telaSelecionada={telaSelecionada}
                         setTelaSelecionada={setTelaSelecionada}/>
                 <div className="container-content">

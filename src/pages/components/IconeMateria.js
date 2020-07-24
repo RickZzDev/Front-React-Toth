@@ -65,7 +65,9 @@ const IconeMateria = ({materia}) => {
     console.log(materia)
 
     return(
-        <FontAwesomeIcon icon={iconesDasMaterias[materia.nome].icone} color={iconesDasMaterias[materia.nome].cor}/>
+        <spam>
+            <FontAwesomeIcon icon={iconesDasMaterias[materia.nome].icone} color={iconesDasMaterias[materia.nome].cor}/>
+        </spam>
     )
 
 }

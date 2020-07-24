@@ -1,17 +1,20 @@
 .container-excluir {
-    width: 300px;
+    width: 450px;
     height: 300px;
     display: flex;
     flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 }
 
-.container-excluir h5 {
+.container-excluir h4 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .container-botoes {
-    width: 100%;
+    width: 60%;
     height: auto;
 
     display: flex;

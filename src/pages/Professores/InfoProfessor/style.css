@@ -1,0 +1,105 @@
+.container-infoProf {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #f2f2f2;
+}
+
+.nome-foto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.nome-foto h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-foto {
+    width: 82px;
+    height: 82px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+
+.container-foto img {
+    width: 100%;
+    height: 100%;
+}
+
+.fechar:hover {
+    cursor: pointer;
+}
+
+.container-info {
+    flex-basis: 600px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-options {
+    width: 100%;
+    height: 80px;
+}
+
+.option {
+    width: 25%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.option:hover {
+    cursor: pointer;
+
+    background-color: #ebebeb;
+    border-bottom: 3px solid blue;
+}
+
+.option img {
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+}
+
+.option:hover > img {
+    transform: scale(1.2, 1.2);
+}
+
+.option p {
+    font-family: Arial, Helvetica, sans-serif;
+    pointer-events: none;
+}
+
+.itemAtivado {
+    cursor: pointer !important;
+
+    background-color: #ebebeb !important;
+    border-bottom: 3px solid blue !important;
+}
+
+.itemAtivado img {
+    transform: scale(1.2, 1.2) !important;
+}
+
+.dados {
+    width: 100%;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

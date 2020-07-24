@@ -157,7 +157,7 @@ const SubMenu = (props) => {
                                         <img src={itens[1][3]}/>
                                     </div>
                                     <div className="nameItem">
-                                        <p>Salas</p>
+                                        <p>Alunos</p>
                                     </div>
                                 </li>
                         

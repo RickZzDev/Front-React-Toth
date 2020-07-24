@@ -1,0 +1,105 @@
+.container-acesso {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.container-texto {
+    width: 50%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-texto h5 {
+    color: #a3a3a3;
+    font-weight: 600;
+
+    margin: 15px 0px;
+}
+
+.container-texto h5, .container-texto p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-texto p {
+    font-size: 22px;
+}
+
+.container-endereco, .container-materia, .container-ano {
+    width: 100%;
+    height: 100%;
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.materia {
+    width: auto;
+    height: 40px;
+
+    margin-left: 20px;
+
+    border-radius: 8px;
+
+    background-color: #e0e0e0;
+
+    cursor: pointer;
+}
+
+.materia p {
+    margin-left: 10px;
+}
+
+.materia spam {
+    margin-right: 20px;
+}
+
+.containerMateria {
+    width: 33%;
+    height: auto;
+}
+
+.cont-ano {
+    width: 25%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ano {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #62c7fc;
+
+    cursor: pointer;
+}
+
+.container-ano {
+    align-items: flex-start;
+}

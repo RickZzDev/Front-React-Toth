@@ -8,7 +8,7 @@ import ExcluirProfessor from './Professores/ExcluirProfessor/ExcluirProfessor'
 const Modal = ({modal, setModal, setAlert, professores, setProfessores}) => {
 
     const closeModal = () => {
-        setModal({"status" : "desativado", "component" : null})
+        setModal({"status" : "desativado", "component" : null, "dados" : ''})
     }
 
     // Se a modal estiver ativada, renderiza o componente passado pra ela.
@@ -19,7 +19,7 @@ const Modal = ({modal, setModal, setAlert, professores, setProfessores}) => {
             case "cadastro" :
                 return <div className="container-modal"><Cadastro closeModal={closeModal} setAlert={setAlert} professoresListados={professores} setProfessores={setProfessores} /></div>
             case "excluirProfessor" : 
-            return <div className="container-modal"><ExcluirProfessor /></div>
+            return <div className="container-modal"><ExcluirProfessor idProfessor={modal.dados} closeModal={closeModal} setAlert={setAlert} professores={professores} setProfessores={setProfessores}/></div>
         }
 
     else

@@ -11,7 +11,7 @@ import professores from './image/professores.png'
 import EtapaTres from './components/EtapaTres'
 import EtapaQuatro from './components/EtapaQuatro'
 
-import saveProfessor from '../../../services/professores/Cadastrar'
+import {saveProfessor} from '../../../services/professores/Cadastrar'
 import { isLogged } from '../../../services/escola/loginService'
 
 const Cadastro = ({closeModal, setAlert, setProfessores, professoresListados}) => {
@@ -71,14 +71,16 @@ const Cadastro = ({closeModal, setAlert, setProfessores, professoresListados}) =
         
         const resultSaveProfessor = await saveProfessor(idEscolaLogada, prof)
 
+        console.log(resultSaveProfessor)
+
         if(resultSaveProfessor.status == 200) {
             closeModal()
-            setAlert('ativado')
+            setAlert({'status' : 'ativado', 'msg' : 'Professor cadastrado com sucesso'})
             setMensagemDeErro({'status' : 'd-none', 'mensagem' : ''})
 
             professoresListados = resultSaveProfessor.data.professores
             setProfessores(professoresListados)
-            setTimeout(() => setAlert('d-none'), 6900)
+            setTimeout(() => setAlert({'status' : 'd-none', 'msg' : ''}), 6900)
         }
         else 
             setMensagemDeErro({'status' : '', 'mensagem' : resultSaveProfessor.data.mensagem})

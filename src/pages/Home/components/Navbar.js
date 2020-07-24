@@ -66,9 +66,8 @@ const Navbar = (props) => {
         }
 
         if(telaSelecionada.submenu != null) {
-            if(dataId === telaSelecionada.menu) {
+            if(dataId === telaSelecionada.menu) 
                 setAnteriormenteSelecionado(!anteriormenteSelecionado)
-            }
         }
 
     }

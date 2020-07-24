@@ -2,7 +2,9 @@ import request from '../basicRequest'
 
 let RESOURCE = "escolas/"
 
-const saveProfessor = async (idEscola, professor) => {
+let DELETE = "professores/"
+
+export const saveProfessor = async (idEscola, professor) => {
     try {
         return await request.post(RESOURCE + idEscola + '/cadastrar-professor', professor)
     } catch(erro) {
@@ -11,4 +13,12 @@ const saveProfessor = async (idEscola, professor) => {
     
 }
 
-export default saveProfessor
+const deletarProfessor = async idProfessor => {
+    try {
+        return await request.post(DELETE + idProfessor)
+    } catch(erro) {
+        return erro.response
+    }
+}
+
+export default deletarProfessor

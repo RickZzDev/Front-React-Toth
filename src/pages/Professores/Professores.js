@@ -10,6 +10,8 @@ import deletar from './images/delete.png'
 import { listarTodos } from '../../services/professores/listar'
 
 import IconeMateria from '../components/IconeMateria'
+import { isLogged } from '../../services/escola/loginService'
+import InfoProfessor from './InfoProfessor/InfoProfessor'
 
 const Professores = ({setModal, alerta, listaProfessores, setProfessores}) => {
 
@@ -19,11 +21,22 @@ const Professores = ({setModal, alerta, listaProfessores, setProfessores}) => {
 
    const [cardsDosProfessores, setCardsDosProfessores] = useState()
 
+    const [infoProf, setInfoProf] = useState({"status" : "desativado", "professor" : null})
+
     useEffect(() => {
         async function listar() {
-            const buscarProfessores = await listarTodos()
+            let idEscolaLogada = null
 
+            if(!(isLogged().id == null))
+                idEscolaLogada = isLogged().id
+            else
+                idEscolaLogada = isLogged().escola.id
+
+            const buscarProfessores = await listarTodos(idEscolaLogada)
             const professores = buscarProfessores.data
+
+            console.log(buscarProfessores)
+            console.log(professores)
             setProfessores(professores)
             setProfessoresDaEscola(professores)
         }
@@ -78,7 +91,7 @@ const Professores = ({setModal, alerta, listaProfessores, setProfessores}) => {
                             Salas
                         </div>
                         <div className="text icons">
-                            <span><img src={add} /></span><span><img src={add} /></span><span><img src={add} /></span><span><img src={add} /></span>
+                            
                         </div>
                     </div>
                     <div className="moreinfo">
@@ -87,7 +100,7 @@ const Professores = ({setModal, alerta, listaProfessores, setProfessores}) => {
                             <p>Deletar</p>
                         </div>
                         <div class="info-button">
-                            <span><img src={moreInfo} /></span>
+                            <span onClick={() => visualizarProfessor(professor)}><img src={moreInfo} /></span>
                             <p>Mais info</p>
                         </div>
                     </div>
@@ -97,38 +110,51 @@ const Professores = ({setModal, alerta, listaProfessores, setProfessores}) => {
 
     }
 
-    return(
-        <div className="cont-prof">
-            <div className="container mt-3">
-                <div className="container-titulo">
-                    <p className="display-4">
-                        Professores
-                    </p>
-                    <div className={`alert alert-success success ${alerta}`}>
-                        Professor cadastrado com sucesso
+    const visualizarProfessor = professor => {
+
+        setInfoProf({"status" : "ativado", "professor" : professor})
+
+    }
+
+    const fecharVisualizar = () => {
+        setInfoProf({"status" : "desativado", "professor" : null})
+    }
+
+    if(infoProf.status == "desativado")
+        return(
+            <div className="cont-prof">
+                <div className="container mt-3">
+                    <div className="container-titulo">
+                        <p className="display-4">
+                            Professores
+                        </p>
+                        <div className={`alert alert-success success ${alerta.status}`}>
+                            {alerta.msg}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="container-prof d-flex justify-content-center mt-4">
-                <div className="container-professores ml-3 pb-4">
-                    <div className="toolbar px-2">
-                        <div onClick={() => setModal({"status" : "ativado", "componente" : "cadastro"})} className="add-professor pb-1 ml-2">
-                        <span><img src={add} /></span><p> Adicionar professor</p>
-                        </div>
-                        <div className="container-search mr-3">
-                            <input type="text" className="pesquisa" onChange={(e) => setValorBarraPesquisa(e.target.value)} />
-                            <div className="button-search">
-                                <img src={search} />
+                <div className="container-prof d-flex justify-content-center mt-4">
+                    <div className="container-professores ml-3 pb-4">
+                        <div className="toolbar px-2">
+                            <div onClick={() => setModal({"status" : "ativado", "componente" : "cadastro"})} className="add-professor pb-1 ml-2">
+                            <span><img src={add} /></span><p> Adicionar professor</p>
+                            </div>
+                            <div className="container-search mr-3">
+                                <input type="text" className="pesquisa" onChange={(e) => setValorBarraPesquisa(e.target.value)} />
+                                <div className="button-search">
+                                    <img src={search} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="container-cards">
-                        {cardsDosProfessores}
+                        <div className="container-cards">
+                            {cardsDosProfessores}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    else
+        return <div className="cont-prof"><InfoProfessor professor={infoProf.professor} fecharVisualizar={fecharVisualizar} /></div>
 
 }
 
